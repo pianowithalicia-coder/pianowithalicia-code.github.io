@@ -1,400 +1,275 @@
-/* =========================
-   Warm Beige / Elegant Theme
-   Drop-in replacement for style.css
-   ========================= */
+/* =====================================
+   Elegant Beige Piano Website Theme
+   Clean version – no overlay bugs
+   ===================================== */
+
+/* ---------- Variables ---------- */
 
 :root{
-  /* Palette */
-  --bg: #f6f1e9;
-  --bg2:#efe7dc;
+  --bg: #f5efe6;
+  --bg-soft: #efe6db;
+  --card: rgba(255,255,255,0.92);
 
-  --surface: rgba(255,255,255,.78);
-  --card: rgba(255,255,255,.82);
-
-  --text: #2b2a27;
+  --text: #2c2a26;
   --muted: #6b6259;
 
-  --line: rgba(43,42,39,.12);
+  --accent: #c88367;      /* warm terracotta */
+  --accent-dark: #a96b52;
 
-  /* Accents */
-  --accent: #c8846a;     /* terracotta */
-  --accent2:#a86e57;     /* deeper terracotta */
-  --accent-soft: rgba(200,132,106,.16);
-
-  --shadow: 0 18px 45px rgba(35, 28, 20, .16);
-  --shadow2: 0 14px 35px rgba(35, 28, 20, .10);
-
-  --radius: 20px;
+  --line: rgba(0,0,0,0.08);
+  --radius: 22px;
   --maxw: 1100px;
 }
 
+/* ---------- Base ---------- */
+
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color: var(--text);
-  background:
-    radial-gradient(900px 600px at 15% 0%, rgba(200,132,106,.18), transparent 60%),
-    radial-gradient(900px 600px at 95% 15%, rgba(168,110,87,.14), transparent 55%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
   line-height:1.6;
 }
 
-img{ max-width:100%; height:auto; display:block; }
-a{ color:inherit; text-decoration:none; }
-a:hover{ opacity:.92; }
+a{ text-decoration:none; color:inherit; }
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+/* ---------- Layout ---------- */
 
 .container{
   width:min(var(--maxw), 92vw);
-  margin-inline:auto;
+  margin:auto;
 }
 
-/* =========================
-   Header / Navigation
-   ========================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background: rgba(246,241,233,.78);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--line);
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:16px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:650;
-  letter-spacing:.2px;
-}
-
-.logo{
-  width:36px;
-  height:36px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(200,132,106,.95), rgba(255,255,255,.88));
-  box-shadow: 0 12px 30px rgba(35, 28, 20, .18);
-}
-
-.navlinks{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-}
-
-.navlinks a{
-  padding:8px 12px;
-  border-radius: 999px;
-  color: var(--muted);
-  transition: background .15s ease, color .15s ease;
-}
-
-.navlinks a.active,
-.navlinks a:hover{
-  background: var(--accent-soft);
-  color: var(--text);
-}
-
-/* =========================
-   Typography helpers
-   ========================= */
-.h1{
-  font-size: clamp(34px, 4vw, 56px);
-  line-height:1.06;
-  margin:0 0 14px;
-  letter-spacing:-.8px;
-  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
-  font-weight: 700;
-}
-
-.lead{
-  font-size: 1.08rem;
-  color: var(--muted);
-  margin:0 0 16px;
-  max-width: 58ch;
-}
-
-.h2{
-  font-size: 1.2rem;
-  margin: 0 0 8px;
-  font-weight: 700;
-}
-
-.p{ margin:0; color: var(--muted); }
-.small{ font-size:.95rem; color: var(--muted); }
-.note{ font-size:.92rem; color: var(--muted); margin-top:10px; }
-
-.hr{
-  height:1px;
-  background: var(--line);
-  margin: 18px 0;
-}
-
-/* =========================
-   Buttons
-   ========================= */
-.button{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding: 11px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(200,132,106,.28);
-  background: rgba(255,255,255,.70);
-  color: var(--text);
-  font-weight: 650;
-  box-shadow: 0 10px 24px rgba(35, 28, 20, .10);
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-}
-
-.button:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 16px 34px rgba(35, 28, 20, .14);
-  border-color: rgba(200,132,106,.40);
-}
-
-.button.primary{
-  border: 1px solid rgba(0,0,0,.03);
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff;
-  box-shadow: 0 16px 40px rgba(168,110,87,.28);
-}
-
-.button.ghost{
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.48);
-}
-
-button.button{
-  cursor:pointer;
-}
-
-/* A row for CTAs */
-.cta-row{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  align-items:center;
-  margin-top:12px;
-}
-
-/* =========================
-   Badges / Pills
-   ========================= */
-.badges{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin: 12px 0 18px;
-}
-
-.badge{
-  border:1px solid rgba(200,132,106,.25);
-  background: rgba(255,255,255,.58);
-  padding:8px 12px;
-  border-radius: 999px;
-  color: var(--muted);
-  font-size:.92rem;
-}
-
-/* =========================
-   Cards / Panels
-   ========================= */
-.card{
-  background: var(--card);
-  border:1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow2);
-}
-
-.card-pad{ padding:18px; }
-
-/* Optional: use "panel" inside a hero image */
-.panel{
-  background: rgba(255,255,255,.74);
-  border: 1px solid rgba(43,42,39,.10);
-  border-radius: var(--radius);
-  padding: 18px;
-  box-shadow: 0 10px 26px rgba(35, 28, 20, .10);
-}
-
-/* =========================
-   Layout helpers
-   ========================= */
 .section{
-  padding: 14px 0 44px;
+  padding: 60px 0;
 }
 
 .split{
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap:14px;
+  gap:24px;
 }
 
 .grid3{
   display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:14px;
-  margin: 18px 0 32px;
+  grid-template-columns: repeat(3,1fr);
+  gap:24px;
 }
 
 @media (max-width: 860px){
-  .split{ grid-template-columns: 1fr; }
-  .grid3{ grid-template-columns: 1fr; }
+  .split,
+  .grid3{
+    grid-template-columns:1fr;
+  }
 }
 
-/* Lists */
-.list{
-  margin:10px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-}
-.list li{ margin:6px 0; }
+/* ---------- Header ---------- */
 
-/* =========================
-   HERO (supports full background image)
-   If you keep your old HTML, it's fine.
-   If you use a hero with class="hero-banner", it will look premium.
-   ========================= */
+header{
+  position:sticky;
+  top:0;
+  background: rgba(245,239,230,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--line);
+  z-index:100;
+}
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.brand{
+  font-weight:600;
+  letter-spacing:0.5px;
+}
+
+.navlinks{
+  display:flex;
+  gap:18px;
+}
+
+.navlinks a{
+  padding:8px 14px;
+  border-radius:999px;
+  color:var(--muted);
+  transition:0.2s;
+}
+
+.navlinks a:hover,
+.navlinks a.active{
+  background:rgba(200,131,103,0.15);
+  color:var(--text);
+}
+
+/* ---------- Hero Section ---------- */
+
 .hero{
-  padding: 26px 0 24px;
+  padding: 40px 0 60px 0;
 }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 18px;
-  align-items: start;
-}
-@media (max-width: 860px){
-  .hero-grid{ grid-template-columns: 1fr; }
-}
-
-/* Full-width background hero container */
 .hero-banner{
-  position: relative;
-  overflow: hidden;
-  border-radius: calc(var(--radius) + 6px);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--line);
-  min-height: 520px;
-  display: grid;
-  align-items: end;
+  position:relative;
+  border-radius: var(--radius);
+  overflow:hidden;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
 }
 
-/* Background image (upload images/hero-piano.jpg) */
-.hero-banner::before{
-  content:"";
+/* Background image (behind everything) */
+.hero-bg{
   position:absolute;
   inset:0;
   background-image: url("images/hero-piano.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transform: scale(1.02);
+  background-size:cover;
+  background-position:center;
+  z-index:0;
 }
 
-
-.hero-inner{
-  position: relative;
-  padding: 34px;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 16px;
-}
-
-@media (max-width: 860px){
-  .hero-banner{ min-height: 560px; }
-  .hero-inner{ grid-template-columns: 1fr; padding: 22px; }
-}
-
-/* Optional image styling if you add inline images */
-.hero-image{
-  width:100%;
+/* Content stays above */
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:50px;
+  max-width:600px;
+  background: rgba(255,255,255,0.85);
   border-radius: var(--radius);
-  box-shadow: var(--shadow2);
+  backdrop-filter: blur(4px);
 }
 
-/* =========================
-   Tables (prices page)
-   ========================= */
+/* Typography */
+
+.h1{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height:1.1;
+  margin:0 0 18px;
+}
+
+.lead{
+  color:var(--muted);
+  font-size:1.1rem;
+  margin-bottom:20px;
+}
+
+.h2{
+  font-size:1.3rem;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.p{
+  color:var(--muted);
+}
+
+/* ---------- Buttons ---------- */
+
+.button{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:600;
+  transition:0.2s;
+  border:1px solid var(--line);
+  background:white;
+}
+
+.button.primary{
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color:white;
+  border:none;
+  box-shadow: 0 14px 30px rgba(200,131,103,0.35);
+}
+
+.button.primary:hover{
+  transform:translateY(-2px);
+}
+
+.button.secondary:hover{
+  background:rgba(200,131,103,0.15);
+}
+
+.cta-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* ---------- Cards ---------- */
+
+.card{
+  background: var(--card);
+  padding:26px;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border:1px solid var(--line);
+}
+
+/* ---------- Lists ---------- */
+
+.list{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.list li{
+  margin-bottom:8px;
+}
+
+/* ---------- Table ---------- */
+
 .table{
   width:100%;
-  border-collapse: collapse;
+  border-collapse:collapse;
+  background:white;
+  border-radius:var(--radius);
   overflow:hidden;
-  border-radius: var(--radius);
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.70);
 }
 
-.table th, .table td{
-  padding: 12px 12px;
-  text-align:left;
+.table th,
+.table td{
+  padding:14px;
   border-bottom:1px solid var(--line);
 }
+
 .table th{
-  color: var(--text);
-  background: rgba(200,132,106,.10);
-  font-weight: 700;
-}
-.table td{ color: var(--muted); }
-
-/* =========================
-   Forms (contact page)
-   ========================= */
-input, textarea{
-  width:100%;
-  padding: 12px 12px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.78);
-  color: var(--text);
-  outline: none;
+  background:rgba(200,131,103,0.12);
 }
 
-input:focus, textarea:focus{
-  border-color: rgba(200,132,106,.55);
-  box-shadow: 0 0 0 4px rgba(200,132,106,.14);
-}
+/* ---------- Forms ---------- */
 
+input,
 textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-label{
-  display:block;
-  margin:10px 0 6px;
-  color: var(--muted);
-  font-size:.95rem;
-}
-
-.map{
   width:100%;
-  height: 320px;
-  border:0;
-  border-radius: var(--radius);
-  overflow:hidden;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  margin-bottom:14px;
 }
 
-/* =========================
-   Footer
-   ========================= */
+input:focus,
+textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(200,131,103,0.2);
+}
+
+/* ---------- Footer ---------- */
+
 .footer{
+  text-align:center;
+  padding:30px 0;
   border-top:1px solid var(--line);
-  padding: 18px 0;
-  color: var(--muted);
-  font-size:.95rem;
+  color:var(--muted);
 }
