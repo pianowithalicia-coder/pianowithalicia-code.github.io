@@ -1,131 +1,275 @@
-<!DOCTYPE html>
-<html lang="en-GB">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+/* =====================================
+   Elegant Beige Piano Website Theme
+   Clean version – no overlay bugs
+   ===================================== */
 
-  <title>Piano Lessons in Coventry | Alicja</title>
-  <meta name="description" content="Warm, structured piano lessons in Coventry for children and adults. Beginners welcome, ABRSM preparation available. Enquire about availability." />
+/* ---------- Variables ---------- */
 
-  <!-- Update this later when you connect your custom domain -->
-  <link rel="canonical" href="https://pianowithalicia-code.github.io/" />
+:root{
+  --bg: #f5efe6;
+  --bg-soft: #efe6db;
+  --card: rgba(255,255,255,0.92);
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+  --text: #2c2a26;
+  --muted: #6b6259;
 
-<body>
+  --accent: #c88367;      /* warm terracotta */
+  --accent-dark: #a96b52;
 
-<header>
-  <div class="container nav">
-    <div class="brand">Alicja • Piano Lessons Coventry</div>
+  --line: rgba(0,0,0,0.08);
+  --radius: 22px;
+  --maxw: 1100px;
+}
 
-    <nav class="navlinks" aria-label="Primary">
-      <a class="active" href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="prices.html">Prices</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+/* ---------- Base ---------- */
 
-<main>
+*{ box-sizing:border-box; }
 
-  <!-- HERO with full background image -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-banner">
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  line-height:1.6;
+}
 
-        <!-- Background piano image -->
-        <div class="hero-bg" aria-hidden="true"></div>
+a{ text-decoration:none; color:inherit; }
 
-        <!-- Text content on top -->
-        <div class="hero-content">
-          <h1 class="h1">Piano Lessons in Coventry</h1>
+img{
+  max-width:100%;
+  display:block;
+}
 
-          <p class="lead">
-            Calm, encouraging lessons with clear structure and steady progress — for children, teenagers, and adults.
-            Based in <strong>CV3</strong>, Coventry.
-          </p>
+/* ---------- Layout ---------- */
 
-          <div class="cta-row">
-            <a class="button primary" href="contact.html">Book now</a>
-            <a class="button secondary" href="prices.html">View prices</a>
-          </div>
+.container{
+  width:min(var(--maxw), 92vw);
+  margin:auto;
+}
 
-          <div style="margin-top:22px">
-            <div class="h2">What you can expect</div>
-            <ul class="list">
-              <li>Tailored lesson plans based on goals and level</li>
-              <li>Strong foundations: technique, reading, and musicianship</li>
-              <li>Clear weekly practice guidance (so progress feels steady)</li>
-              <li>Supportive teaching that builds confidence</li>
-            </ul>
-          </div>
+.section{
+  padding: 60px 0;
+}
 
-          <div style="margin-top:18px">
-            <div class="h2">Location</div>
-            <p class="p">
-              Lessons in Coventry near <strong>[AREA]</strong> (approx. <strong>CV3</strong>).
-              Exact address shared when booking.
-            </p>
-            <p class="p" style="margin-top:8px">
-              Email: <strong>you@example.com</strong>
-            </p>
-          </div>
+.split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:24px;
+}
 
-        </div>
-      </div>
-    </div>
-  </section>
+.grid3{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:24px;
+}
 
-  <!-- SERVICES / HIGHLIGHTS -->
-  <section class="section">
-    <div class="container">
+@media (max-width: 860px){
+  .split,
+  .grid3{
+    grid-template-columns:1fr;
+  }
+}
 
-      <div class="grid3">
-        <div class="card">
-          <div class="h2">Children</div>
-          <p class="p">Fun, focused lessons that build strong foundations and good practice habits.</p>
-        </div>
+/* ---------- Header ---------- */
 
-        <div class="card">
-          <div class="h2">Adults</div>
-          <p class="p">Supportive pace, clear goals, and music you genuinely enjoy playing.</p>
-        </div>
+header{
+  position:sticky;
+  top:0;
+  background: rgba(245,239,230,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid var(--line);
+  z-index:100;
+}
 
-        <div class="card">
-          <div class="h2">ABRSM Exams</div>
-          <p class="p">Preparation for grades with technique, repertoire, and performance confidence.</p>
-        </div>
-      </div>
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
 
-      <div class="card">
-        <div class="h2">Looking for a piano teacher in Coventry?</div>
-        <p class="p">
-          I offer structured piano tuition with a calm, friendly approach. Each lesson includes clear practice direction
-          so progress feels achievable and motivating.
-        </p>
+.brand{
+  font-weight:600;
+  letter-spacing:0.5px;
+}
 
-        <div class="cta-row" style="margin-top:16px">
-          <a class="button primary" href="contact.html">Send an enquiry</a>
-          <a class="button secondary" href="about.html">Read more</a>
-        </div>
-      </div>
+.navlinks{
+  display:flex;
+  gap:18px;
+}
 
-    </div>
-  </section>
+.navlinks a{
+  padding:8px 14px;
+  border-radius:999px;
+  color:var(--muted);
+  transition:0.2s;
+}
 
-</main>
+.navlinks a:hover,
+.navlinks a.active{
+  background:rgba(200,131,103,0.15);
+  color:var(--text);
+}
 
-<footer class="footer">
-  <div class="container">
-    © <span id="year"></span> Alicja • Piano Lessons in Coventry
-  </div>
-</footer>
+/* ---------- Hero Section ---------- */
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+.hero{
+  padding: 40px 0 60px 0;
+}
 
-</body>
-</html>
+.hero-banner{
+  position:relative;
+  border-radius: var(--radius);
+  overflow:hidden;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* Background image (behind everything) */
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background-image: url("images/hero-piano.jpg");
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+}
+
+/* Content stays above */
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:50px;
+  max-width:600px;
+  background: rgba(255,255,255,0.85);
+  border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+}
+
+/* Typography */
+
+.h1{
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 5vw, 56px);
+  line-height:1.1;
+  margin:0 0 18px;
+}
+
+.lead{
+  color:var(--muted);
+  font-size:1.1rem;
+  margin-bottom:20px;
+}
+
+.h2{
+  font-size:1.3rem;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.p{
+  color:var(--muted);
+}
+
+/* ---------- Buttons ---------- */
+
+.button{
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:999px;
+  font-weight:600;
+  transition:0.2s;
+  border:1px solid var(--line);
+  background:white;
+}
+
+.button.primary{
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color:white;
+  border:none;
+  box-shadow: 0 14px 30px rgba(200,131,103,0.35);
+}
+
+.button.primary:hover{
+  transform:translateY(-2px);
+}
+
+.button.secondary:hover{
+  background:rgba(200,131,103,0.15);
+}
+
+.cta-row{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+/* ---------- Cards ---------- */
+
+.card{
+  background: var(--card);
+  padding:26px;
+  border-radius: var(--radius);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border:1px solid var(--line);
+}
+
+/* ---------- Lists ---------- */
+
+.list{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.list li{
+  margin-bottom:8px;
+}
+
+/* ---------- Table ---------- */
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:var(--radius);
+  overflow:hidden;
+}
+
+.table th,
+.table td{
+  padding:14px;
+  border-bottom:1px solid var(--line);
+}
+
+.table th{
+  background:rgba(200,131,103,0.12);
+}
+
+/* ---------- Forms ---------- */
+
+input,
+textarea{
+  width:100%;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  margin-bottom:14px;
+}
+
+input:focus,
+textarea:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(200,131,103,0.2);
+}
+
+/* ---------- Footer ---------- */
+
+.footer{
+  text-align:center;
+  padding:30px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+}
