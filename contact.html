@@ -32,29 +32,38 @@
           <div class="h2">Enquiry form</div>
 
           <!-- Replace action with your Formspree URL -->
-          <form action="YOUR_FORMSPREE_URL" method="POST">
-            <label for="name">Name</label>
-            <input id="name" name="name" autocomplete="name" required>
+         <form action="https://formspree.io/f/xdalvnrr" method="POST">
 
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text" autocomplete="name" required>
 
-            <label for="student">Student (child/adult) & level</label>
-            <input id="student" name="student" placeholder="e.g. age 7 beginner / adult returning" required>
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" autocomplete="email" required>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Availability, goals, any questions…" required></textarea>
+  <label for="student">Student (child/adult) & level</label>
+  <input id="student" name="student" type="text" placeholder="e.g. age 7 beginner / adult returning / ABRSM Grade 3" required>
 
-            <!-- Optional: helps reduce spam a bit -->
-            <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
+  <label for="availability">Preferred days/times</label>
+  <input id="availability" name="availability" type="text" placeholder="e.g. Tues 4–6pm, Sat mornings">
 
-            <div class="cta-row" style="margin-top:12px">
-              <button class="button primary" type="submit">Send enquiry</button>
-              <a class="button" href="prices.html">View prices</a>
-            </div>
+  <label for="message">Message</label>
+  <textarea id="message" name="message" rows="6" placeholder="Any goals, pieces they enjoy, exam aims, etc." required></textarea>
 
-            <p class="note">Tip: If you prefer, you can also email me at <strong>you@example.com</strong>.</p>
-          </form>
+  <!-- helpful email subject -->
+  <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
+
+  <!-- after submit, redirect to a simple thank-you page (optional)
+       If you don’t have thankyou.html yet, delete this line -->
+  <!-- <input type="hidden" name="_next" value="https://pianowithalicia-code.github.io/thankyou.html"> -->
+
+  <div class="cta-row" style="margin-top:12px">
+    <button type="submit" class="button primary">Send enquiry</button>
+    <a class="button secondary" href="prices.html">View prices</a>
+  </div>
+
+  <p class="note">I usually reply within 24–48 hours.</p>
+
+</form>
         </div>
 
         <div class="card card-pad">
