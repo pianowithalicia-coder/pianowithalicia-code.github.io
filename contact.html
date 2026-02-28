@@ -7,7 +7,6 @@
   <title>Contact | Piano Lessons in Coventry</title>
   <meta name="description" content="Book a free consultation or send an enquiry about piano lessons in Coventry." />
 
-  <link rel="canonical" href="https://pianowithalicia-code.github.io/contact.html" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -30,7 +29,7 @@
   <div class="container nav">
     <div class="brand">Alicja • Piano Lessons Coventry</div>
 
-    <nav class="navlinks" aria-label="Primary">
+    <nav class="navlinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="prices.html">Prices</a>
@@ -44,10 +43,11 @@
 
     <h1 class="h1">Contact</h1>
     <p class="lead">
-      You’re welcome to send an enquiry below. I usually reply within 24–48 hours.
+      You’re welcome to send an enquiry or book a short consultation below.
+      I usually reply within 24–48 hours.
     </p>
 
-    <!-- ================= ENQUIRY + DETAILS ================= -->
+    <!-- ================= FORM + CALENDLY ================= -->
     <div class="split">
 
       <!-- LEFT: FORM -->
@@ -57,10 +57,10 @@
         <form action="https://formspree.io/f/xdalvnrr" method="POST">
 
           <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
+          <input id="name" name="name" type="text" required>
 
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
+          <input id="email" name="email" type="email" required>
 
           <label for="student">Student (child/adult) & level</label>
           <input id="student" name="student" type="text"
@@ -72,7 +72,7 @@
 
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="6"
-                    placeholder="Any goals, experience, or questions" required></textarea>
+                    placeholder="Any goals or questions" required></textarea>
 
           <input type="hidden" name="_subject"
                  value="New piano lesson enquiry (Coventry)">
@@ -88,72 +88,65 @@
         </form>
       </div>
 
-<!-- RIGHT: LOCATION -->
-<div class="card">
+      <!-- RIGHT: CALENDLY -->
+      <div class="card">
+        <div class="h2">Free 15-Minute Consultation</div>
 
-  <div class="h2">Location</div>
+        <p class="p">
+          Prefer to speak first? You’re welcome to book a short introductory call
+          to discuss suitability, goals, or availability.
+        </p>
 
-  <p class="p">
-    Lessons take place in Coventry (approx. <strong>CV3</strong>).
-    The exact address is shared once a booking is confirmed.
-  </p>
+        <div style="margin-top:20px;">
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/piano-with-alicia/15min"
+               style="min-width:320px;height:650px;">
+          </div>
+        </div>
 
-  <div style="margin-top:20px; margin-left:-24px; margin-right:-24px;">
-    <iframe
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      aria-label="Map showing the CV3 area in Coventry"
-      src="https://www.google.com/maps?q=CV3%20Coventry&z=13&output=embed"
-      style="width:100%; height:450px; border:0;">
-    </iframe>
-  </div>
+        <p class="note" style="margin-top:12px;">
+          The consultation is free and carries no obligation.
+        </p>
+      </div>
 
-  <p class="note" style="margin-top:14px;">
-    The map shows the general area only for privacy.
-  </p>
-
-</div>
-    <!-- ======================================================= -->
+    </div>
+    <!-- ===================================================== -->
 
 
-    <!-- ================= CONSULTATION SECTION (BOTTOM) ================= -->
-    <div class="card" style="margin:60px 0 0 0;">
+    <!-- ================= LOCATION (FULL WIDTH) ================= -->
+    <div class="card" style="margin-top:60px;">
 
-      <div class="h2">Prefer to Talk First?</div>
+      <div class="h2">Location</div>
 
       <p class="p">
-        If you would like to discuss suitability, goals, or availability before
-        booking lessons, you’re welcome to schedule a short introductory call.
+        Lessons take place in Coventry (approx. <strong>CV3</strong>).
+        The exact address is shared once a booking is confirmed.
       </p>
 
-      <p class="p" style="margin-top:8px;">
-        The consultation is free and carries no obligation.
-      </p>
-
-      <div style="margin-top:20px;">
-        <div class="calendly-inline-widget"
-             data-url="https://calendly.com/piano-with-alicia/15min"
-             style="min-width:320px;height:650px;">
-        </div>
+      <div style="margin-top:20px; margin-left:-24px; margin-right:-24px;">
+        <iframe
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=CV3%20Coventry&z=13&output=embed"
+          style="width:100%; height:450px; border:0;">
+        </iframe>
       </div>
 
       <p class="note" style="margin-top:14px;">
-        Existing students may also use this calendar to request rescheduling.
+        The map shows the general area only for privacy.
       </p>
 
     </div>
-    <!-- ================================================================= -->
+    <!-- ========================================================== -->
 
   </div>
 </main>
-
 
 <footer class="footer">
   <div class="container">
     © <span id="year"></span> Alicja • Piano Lessons in Coventry
   </div>
 </footer>
-
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
