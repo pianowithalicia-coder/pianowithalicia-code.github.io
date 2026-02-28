@@ -300,3 +300,11 @@ label{display:block; margin:10px 0 6px; color: var(--muted); font-size:.95rem}
   border-radius: var(--radius);
   padding: 18px;
 }
+
+.cta-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-top:12px;
+}
