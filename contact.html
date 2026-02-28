@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Coventry Piano Lessons</title>
-  <meta name="description" content="Contact [YOUR NAME] to enquire about piano lessons in Coventry. Check availability and ask questions." />
-  <link rel="canonical" href="https://YOURDOMAIN.co.uk/contact.html" />
+
+  <title>Contact | Piano Lessons in Coventry</title>
+  <meta name="description" content="Contact Alicja to enquire about piano lessons in Coventry. Beginners welcome. ABRSM preparation available." />
+
+  <link rel="canonical" href="https://pianowithalicia-code.github.io/contact.html" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 <header>
   <div class="container nav">
-    <div class="brand"><div class="logo" aria-hidden="true"></div><div>[YOUR NAME] • Coventry Piano</div></div>
+    <div class="brand">Alicja • Piano Lessons Coventry</div>
+
     <nav class="navlinks" aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -23,78 +27,83 @@
 
 <main class="section">
   <div class="container">
-    <div class="card card-pad">
-      <h1 class="h1" style="margin-bottom:12px">Contact</h1>
-      <p class="lead">Send an enquiry and I’ll reply within 24–48 hours.</p>
+    <h1 class="h1">Contact</h1>
+    <p class="lead">Send an enquiry and I’ll reply within 24–48 hours.</p>
 
-      <div class="split">
-        <div class="card card-pad">
-          <div class="h2">Enquiry form</div>
+    <div class="split">
+      <div class="card">
+        <div class="h2">Enquiry form</div>
 
-          <!-- Replace action with your Formspree URL -->
-         <form action="https://formspree.io/f/xdalvnrr" method="POST">
+        <!-- IMPORTANT: method="POST" is required -->
+        <form action="https://formspree.io/f/xdalvnrr" method="POST">
 
-  <label for="name">Name</label>
-  <input id="name" name="name" type="text" autocomplete="name" required>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
 
-  <label for="email">Email</label>
-  <input id="email" name="email" type="email" autocomplete="email" required>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
 
-  <label for="student">Student (child/adult) & level</label>
-  <input id="student" name="student" type="text" placeholder="e.g. age 7 beginner / adult returning / ABRSM Grade 3" required>
+          <label for="student">Student (child/adult) & level</label>
+          <input id="student" name="student" type="text"
+                 placeholder="e.g. age 7 beginner / adult returning / ABRSM Grade 3" required>
 
-  <label for="availability">Preferred days/times</label>
-  <input id="availability" name="availability" type="text" placeholder="e.g. Tues 4–6pm, Sat mornings">
+          <label for="availability">Preferred days/times (optional)</label>
+          <input id="availability" name="availability" type="text"
+                 placeholder="e.g. Tue 4–6pm, Sat mornings">
 
-  <label for="message">Message</label>
-  <textarea id="message" name="message" rows="6" placeholder="Any goals, pieces they enjoy, exam aims, etc." required></textarea>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6"
+                    placeholder="Any goals, pieces they enjoy, exam aims, etc." required></textarea>
 
-  <!-- helpful email subject -->
-  <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
+          <!-- Optional: improves the email subject -->
+          <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
 
-  <!-- after submit, redirect to a simple thank-you page (optional)
-       If you don’t have thankyou.html yet, delete this line -->
-  <!-- <input type="hidden" name="_next" value="https://pianowithalicia-code.github.io/thankyou.html"> -->
+          <div class="cta-row" style="margin-top:12px">
+            <button type="submit" class="button primary">Send enquiry</button>
+            <a class="button secondary" href="prices.html">View prices</a>
+          </div>
 
-  <div class="cta-row" style="margin-top:12px">
-    <button type="submit" class="button primary">Send enquiry</button>
-    <a class="button secondary" href="prices.html">View prices</a>
-  </div>
+          <p class="note">By sending this form, you agree to be contacted about your enquiry.</p>
+        </form>
+      </div>
 
-  <p class="note">I usually reply within 24–48 hours.</p>
+      <div class="card">
+        <div class="h2">Other ways to reach me</div>
+        <p class="p">Email: <strong>you@example.com</strong></p>
+        <p class="p" style="margin-top:10px">
+          Location: Coventry (near <strong>Cheylesmore / Styvechale</strong>, approx. <strong>CV3</strong>).
+          Exact address shared when booking.
+        </p>
 
-</form>
-        </div>
+        <div style="margin-top:18px" class="h2">What to include</div>
+        <ul class="list">
+          <li>Student age / level</li>
+          <li>Preferred days/times</li>
+          <li>Goals (for fun, exams, returning adult, etc.)</li>
+        </ul>
 
-        <div class="card card-pad">
-          <div class="h2">Location</div>
-          <p class="p">
-            Coventry, near <strong>[AREA]</strong> (<strong>[POSTCODE AREA]</strong>). Exact address shared when booking.
-          </p>
-
-          <div class="hr"></div>
-
-          <div class="h2">Map</div>
-          <!-- How to get this: Google Maps → Share → Embed a map → copy iframe -->
+        <!-- Optional: embed a general Coventry map (privacy-friendly)
+        <div style="margin-top:18px">
           <iframe class="map"
-            src="PASTE_YOUR_GOOGLE_MAPS_EMBED_LINK_HERE"
+            src="PASTE_GOOGLE_MAPS_EMBED_LINK_HERE"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            aria-label="Map of Coventry area">
-          </iframe>
-
-          <p class="note">
-            Use an area-level map (not your exact home pin) if you want privacy.
-          </p>
+            aria-label="Map of Coventry area"></iframe>
         </div>
+        -->
       </div>
     </div>
   </div>
 </main>
 
 <footer class="footer">
-  <div class="container">© <span id="year"></span> [YOUR NAME] • Coventry</div>
+  <div class="container">
+    © <span id="year"></span> Alicja • Piano Lessons in Coventry
+  </div>
 </footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
