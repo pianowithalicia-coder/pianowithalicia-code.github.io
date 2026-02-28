@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Coventry Piano Lessons</title>
+  <meta name="description" content="Contact [YOUR NAME] to enquire about piano lessons in Coventry. Check availability and ask questions." />
+  <link rel="canonical" href="https://YOURDOMAIN.co.uk/contact.html" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand"><div class="logo" aria-hidden="true"></div><div>[YOUR NAME] • Coventry Piano</div></div>
+    <nav class="navlinks" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="prices.html">Prices</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
+<main class="section">
+  <div class="container">
+    <div class="card card-pad">
+      <h1 class="h1" style="margin-bottom:12px">Contact</h1>
+      <p class="lead">Send an enquiry and I’ll reply within 24–48 hours.</p>
+
+      <div class="split">
+        <div class="card card-pad">
+          <div class="h2">Enquiry form</div>
+
+          <!-- Replace action with your Formspree URL -->
+          <form action="YOUR_FORMSPREE_URL" method="POST">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+
+            <label for="student">Student (child/adult) & level</label>
+            <input id="student" name="student" placeholder="e.g. age 7 beginner / adult returning" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Availability, goals, any questions…" required></textarea>
+
+            <!-- Optional: helps reduce spam a bit -->
+            <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
+
+            <div class="cta-row" style="margin-top:12px">
+              <button class="button primary" type="submit">Send enquiry</button>
+              <a class="button" href="prices.html">View prices</a>
+            </div>
+
+            <p class="note">Tip: If you prefer, you can also email me at <strong>you@example.com</strong>.</p>
+          </form>
+        </div>
+
+        <div class="card card-pad">
+          <div class="h2">Location</div>
+          <p class="p">
+            Coventry, near <strong>[AREA]</strong> (<strong>[POSTCODE AREA]</strong>). Exact address shared when booking.
+          </p>
+
+          <div class="hr"></div>
+
+          <div class="h2">Map</div>
+          <!-- How to get this: Google Maps → Share → Embed a map → copy iframe -->
+          <iframe class="map"
+            src="PASTE_YOUR_GOOGLE_MAPS_EMBED_LINK_HERE"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map of Coventry area">
+          </iframe>
+
+          <p class="note">
+            Use an area-level map (not your exact home pin) if you want privacy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">© <span id="year"></span> [YOUR NAME] • Coventry</div>
+</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
