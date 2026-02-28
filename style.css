@@ -306,15 +306,6 @@ button.button{
   transform: scale(1.02);
 }
 
-/* Overlay to keep text readable */
-.hero-banner::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg, rgba(246,241,233,.94) 0%, rgba(246,241,233,.80) 52%, rgba(246,241,233,.45) 100%),
-    linear-gradient(180deg, rgba(246,241,233,.10) 0%, rgba(246,241,233,.58) 100%);
-}
 
 .hero-inner{
   position: relative;
