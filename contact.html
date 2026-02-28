@@ -31,12 +31,11 @@
     <p class="lead">Send an enquiry and I’ll reply within 24–48 hours.</p>
 
     <div class="split">
+      <!-- LEFT: FORM -->
       <div class="card">
         <div class="h2">Enquiry form</div>
 
-        <!-- IMPORTANT: method="POST" is required -->
         <form action="https://formspree.io/f/xdalvnrr" method="POST">
-
           <label for="name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required>
 
@@ -55,7 +54,6 @@
           <textarea id="message" name="message" rows="6"
                     placeholder="Any goals, pieces they enjoy, exam aims, etc." required></textarea>
 
-          <!-- Optional: improves the email subject -->
           <input type="hidden" name="_subject" value="New piano lesson enquiry (Coventry)">
 
           <div class="cta-row" style="margin-top:12px">
@@ -67,30 +65,33 @@
         </form>
       </div>
 
+      <!-- RIGHT: LOCATION + MAP -->
       <div class="card">
-        <div class="h2">Other ways to reach me</div>
-        <p class="p">Email: <strong>you@example.com</strong></p>
-        <p class="p" style="margin-top:10px">
-          Location: Coventry (near <strong>Cheylesmore / Styvechale</strong>, approx. <strong>CV3</strong>).
-          Exact address shared when booking.
+        <div class="h2">Location</div>
+        <p class="p">
+          Coventry (approx. <strong>CV3</strong>). Exact address shared when booking.
         </p>
 
-        <div style="margin-top:18px" class="h2">What to include</div>
+        <div style="margin-top:14px" class="h2">Map (area-level)</div>
+        <iframe
+          class="map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Map showing the CV3 area in Coventry"
+          src="https://www.google.com/maps?q=CV3%201QF&z=13&output=embed">
+        </iframe>
+
+        <p class="note">
+          This map is centred on the CV3 area (not an exact home pin). If you want it broader, change the zoom:
+          <strong>z=12</strong> or <strong>z=11</strong>.
+        </p>
+
+        <div style="margin-top:16px" class="h2">What to include</div>
         <ul class="list">
           <li>Student age / level</li>
           <li>Preferred days/times</li>
           <li>Goals (for fun, exams, returning adult, etc.)</li>
         </ul>
-
-        <!-- Optional: embed a general Coventry map (privacy-friendly)
-        <div style="margin-top:18px">
-          <iframe class="map"
-            src="PASTE_GOOGLE_MAPS_EMBED_LINK_HERE"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            aria-label="Map of Coventry area"></iframe>
-        </div>
-        -->
       </div>
     </div>
   </div>
