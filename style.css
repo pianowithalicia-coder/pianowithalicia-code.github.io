@@ -337,3 +337,14 @@ textarea:focus{
     grid-template-columns: 1fr;
   }
 }
+
+.video-title{
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+  font-size: 15px;
+}
+
+.video-title em{
+  font-style: italic;
+}
