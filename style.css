@@ -387,3 +387,13 @@ textarea:focus{
     grid-template-columns: 1fr;
   }
 }
+
+.pricing-list{
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.pricing-list li{
+  margin-bottom: 10px;
+}
