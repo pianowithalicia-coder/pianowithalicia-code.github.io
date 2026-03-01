@@ -88,6 +88,106 @@
     </div>
   </section>
 
+<!-- REVIEWS -->
+<section class="section">
+  <div class="container">
+    <div class="reviews-head">
+      <h2 class="h2" style="margin:0;">Reviews</h2>
+      <div class="reviews-controls">
+        <button class="reviews-btn" type="button" aria-label="Previous reviews" onclick="reviewsPrev()">‹</button>
+        <button class="reviews-btn" type="button" aria-label="Next reviews" onclick="reviewsNext()">›</button>
+      </div>
+    </div>
+
+    <div class="reviews-track" id="reviewsTrack">
+
+      <!-- Review 1 -->
+      <article class="review-card">
+        <div class="review-text">“Alicja is patient, encouraging and very clear. My daughter has improved so much in confidence.”</div>
+        <div class="review-meta">— Parent of Year 2 student</div>
+      </article>
+
+      <!-- Review 2 -->
+      <article class="review-card">
+        <div class="review-text">“Lessons are well structured and enjoyable. I appreciate the detailed practice guidance each week.”</div>
+        <div class="review-meta">— Adult student</div>
+      </article>
+
+      <!-- Review 3 -->
+      <article class="review-card">
+        <div class="review-text">“Excellent ABRSM preparation — clear goals, great technique focus, and supportive feedback.”</div>
+        <div class="review-meta">— Parent (ABRSM)</div>
+      </article>
+
+      <!-- Review 4 -->
+      <article class="review-card">
+        <div class="review-text">“Very professional and kind. The lessons feel calm but productive, and progress is easy to track.”</div>
+        <div class="review-meta">— Adult returning pianist</div>
+      </article>
+
+      <!-- Review 5 -->
+      <article class="review-card">
+        <div class="review-text">“My son looks forward to lessons every week. Alicja explains things in a way that really clicks.”</div>
+        <div class="review-meta">— Parent of beginner</div>
+      </article>
+
+      <!-- Review 6 -->
+      <article class="review-card">
+        <div class="review-text">“High-quality teaching and musical insight. I feel more confident reading and playing with expression.”</div>
+        <div class="review-meta">— Teen student</div>
+      </article>
+
+    </div>
+
+    <div class="note" style="margin-top:14px;">
+      Want to speak first? You can book a free 15-minute consultation on the Contact page.
+    </div>
+  </div>
+</section>
+
+<script>
+  // Reviews slider (3 at a time)
+  let reviewsIndex = 0;
+
+  function reviewsUpdate(){
+    const track = document.getElementById('reviewsTrack');
+    if(!track) return;
+
+    const cards = track.querySelectorAll('.review-card');
+    const total = cards.length;
+    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
+
+    // clamp index to valid "pages"
+    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
+    reviewsIndex = Math.min(reviewsIndex, maxIndex);
+
+    track.style.setProperty('--perView', perView);
+    track.style.transform = `translateX(-${reviewsIndex * 100}%)`;
+  }
+
+  function reviewsNext(){
+    const track = document.getElementById('reviewsTrack');
+    const total = track.querySelectorAll('.review-card').length;
+    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
+    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
+    reviewsIndex = (reviewsIndex + 1) > maxIndex ? 0 : (reviewsIndex + 1);
+    reviewsUpdate();
+  }
+
+  function reviewsPrev(){
+    const track = document.getElementById('reviewsTrack');
+    const total = track.querySelectorAll('.review-card').length;
+    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
+    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
+    reviewsIndex = (reviewsIndex - 1) < 0 ? maxIndex : (reviewsIndex - 1);
+    reviewsUpdate();
+  }
+
+  window.addEventListener('resize', reviewsUpdate);
+  window.addEventListener('load', reviewsUpdate);
+</script>
+
+  
   <!-- SERVICES -->
   <section class="section">
     <div class="container">
