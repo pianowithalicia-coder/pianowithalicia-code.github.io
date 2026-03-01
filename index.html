@@ -148,47 +148,55 @@
 </section>
 
 <script>
-  // Reviews slider (3 at a time)
   let reviewsIndex = 0;
+
+  function getPerView(){
+    return window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
+  }
 
   function reviewsUpdate(){
     const track = document.getElementById('reviewsTrack');
     if(!track) return;
 
-    const cards = track.querySelectorAll('.review-card');
-    const total = cards.length;
-    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
-
-    // clamp index to valid "pages"
-    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
-    reviewsIndex = Math.min(reviewsIndex, maxIndex);
+    const total = track.querySelectorAll('.review-card').length;
+    const perView = getPerView();
 
     track.style.setProperty('--perView', perView);
-    track.style.transform = `translateX(-${reviewsIndex * 100}%)`;
+
+    // Max starting index so we never scroll past the last full set
+    const maxIndex = Math.max(0, total - perView);
+    reviewsIndex = Math.min(reviewsIndex, maxIndex);
+
+    // Slide by 1 card each time
+    const gap = parseFloat(getComputedStyle(track).gap) || 18;
+    const card = track.querySelector('.review-card');
+    const cardWidth = card ? card.getBoundingClientRect().width : 0;
+
+    const offset = reviewsIndex * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
   }
 
   function reviewsNext(){
     const track = document.getElementById('reviewsTrack');
     const total = track.querySelectorAll('.review-card').length;
-    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
-    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
-    reviewsIndex = (reviewsIndex + 1) > maxIndex ? 0 : (reviewsIndex + 1);
+    const perView = getPerView();
+    const maxIndex = Math.max(0, total - perView);
+
+    reviewsIndex = Math.min(reviewsIndex + 1, maxIndex);
     reviewsUpdate();
   }
 
   function reviewsPrev(){
-    const track = document.getElementById('reviewsTrack');
-    const total = track.querySelectorAll('.review-card').length;
-    const perView = window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
-    const maxIndex = Math.max(0, Math.ceil(total / perView) - 1);
-    reviewsIndex = (reviewsIndex - 1) < 0 ? maxIndex : (reviewsIndex - 1);
+    reviewsIndex = Math.max(reviewsIndex - 1, 0);
     reviewsUpdate();
   }
 
-  window.addEventListener('resize', reviewsUpdate);
-  window.addEventListener('load', reviewsUpdate);
+  window.addEventListener('resize', () => {
+    // small delay lets layout settle before measuring widths
+    setTimeout(reviewsUpdate, 60);
+  });
+  window.addEventListener('load', () => setTimeout(reviewsUpdate, 60));
 </script>
-
   
   <!-- SERVICES -->
   <section class="section">
