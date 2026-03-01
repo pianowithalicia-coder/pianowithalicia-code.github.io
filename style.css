@@ -428,3 +428,49 @@ textarea:focus{
 @media (max-width: 900px){
   .reviews-track{ --perView: 1; }
 }
+
+/* Reviews header row */
+.reviews-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-top: 30px;
+}
+
+/* Buttons top-right */
+.reviews-controls{
+  display:flex;
+  gap:12px;
+}
+
+/* Pretty round arrow buttons */
+.reviews-btn{
+  width:52px;
+  height:52px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  cursor:pointer;
+  font-size:24px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.reviews-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.95);
+}
+
+.reviews-btn:active{
+  transform: translateY(0px);
+}
+
+.reviews-btn:focus{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(199,154,122,0.35), 0 10px 25px rgba(0,0,0,0.06);
+}
