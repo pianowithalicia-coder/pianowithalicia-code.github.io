@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prices | Coventry Piano Lessons</title>
-  <meta name="description" content="Lesson prices for piano lessons in Coventry with [YOUR NAME]. 30/45/60 minute options available." />
-  <link rel="canonical" href="https://YOURDOMAIN.co.uk/prices.html" />
+
+  <title>Lesson Options | Piano Lessons in Coventry</title>
+  <meta name="description" content="Lesson options and studio fees for piano lessons in Coventry." />
+
   <link rel="stylesheet" href="style.css" />
 </head>
-
+  
 <a
   class="wa-float"
   href="https://api.whatsapp.com/send?phone=48666936990&text=Hi%20Alicja%2C%20I%27d%20like%20to%20enquire%20about%20piano%20lessons%20in%20Coventry."
@@ -23,13 +24,15 @@
 </a>
   
 <body>
+
 <header>
   <div class="container nav">
-    <div class="brand"><div class="logo" aria-hidden="true"></div><div>Alicja • Piano Lessons Coventry</div></div>
-    <nav class="navlinks" aria-label="Primary">
+    <div class="brand">Alicja • Piano Lessons Coventry</div>
+
+    <nav class="navlinks">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a class="active" href="prices.html">Prices</a>
+      <a class="active" href="prices.html">Lesson Options</a>
       <a href="contact.html">Contact</a>
     </nav>
   </div>
@@ -37,73 +40,74 @@
 
 <main class="section">
   <div class="container">
-    <div class="card card-pad">
-      <h1 class="h1" style="margin-bottom:12px">Lesson prices</h1>
-      <p class="lead">Transparent pricing for piano lessons in Coventry. Choose the lesson length that fits your goals.</p>
 
-      <div class="hr"></div>
+    <h1 class="h1">Lesson Options</h1>
+    <p class="lead">
+      All lessons are 45 minutes and take place in my home studio in Coventry (CV3).
+    </p>
 
-      <table class="table" aria-label="Lesson pricing">
-        <thead>
-          <tr>
-            <th>Lesson length</th>
-            <th>Price</th>
-            <th>Best for</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>30 minutes</td>
-            <td>£XX</td>
-            <td>Young beginners, focused weekly progress</td>
-          </tr>
-          <tr>
-            <td>45 minutes</td>
-            <td>£XX</td>
-            <td>Steady development, more repertoire time</td>
-          </tr>
-          <tr>
-            <td>60 minutes</td>
-            <td>£XX</td>
-            <td>Intermediate+, exam prep, deeper musical work</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="pricing-grid">
 
-      <p class="note">Edit prices above. You can also add policies (cancellations, payment method) if you want.</p>
-
-      <div class="hr"></div>
-
-      <div class="split">
-        <div class="card card-pad">
-          <div class="h2">What’s included</div>
-          <ul class="list">
-            <li>Structured plan + tailored materials</li>
-            <li>Technique + repertoire + musicianship</li>
-            <li>Practice guidance each week</li>
-          </ul>
-        </div>
-        <div class="card card-pad">
-          <div class="h2">ABRSM support</div>
-          <ul class="list">
-            <li>Exam repertoire and performance confidence</li>
-            <li>Scales, sight-reading and aural guidance</li>
-            <li>Tracking progress towards exam readiness</li>
-          </ul>
-        </div>
+      <!-- Single Lesson -->
+      <div class="card pricing-card">
+        <div class="pricing-title">Single Lesson</div>
+        <div class="pricing-price">£40</div>
+        <div class="pricing-note">45-minute individual lesson</div>
+        <ul class="list">
+          <li>Tailored lesson plan</li>
+          <li>Technical & musical development</li>
+          <li>Practice guidance</li>
+        </ul>
       </div>
 
-      <div class="cta-row" style="margin-top:16px">
-        <a class="button primary" href="contact.html">Enquire / book a first lesson</a>
-        <a class="button" href="index.html">Back to home</a>
+      <!-- 5 Lesson Bundle -->
+      <div class="card pricing-card highlight">
+        <div class="pricing-title">5-Lesson Package</div>
+        <div class="pricing-price">£180</div>
+        <div class="pricing-note">10% discount (£36 per lesson)</div>
+        <ul class="list">
+          <li>Designed for consistent weekly progress</li>
+          <li>Priority booking</li>
+          <li>Structured development plan</li>
+        </ul>
       </div>
+
+      <!-- 10 Lesson Bundle -->
+      <div class="card pricing-card">
+        <div class="pricing-title">10-Lesson Package</div>
+        <div class="pricing-price">£340</div>
+        <div class="pricing-note">15% discount (£34 per lesson)</div>
+        <ul class="list">
+          <li>Best value option</li>
+          <li>Long-term progression planning</li>
+          <li>Ideal for exam preparation</li>
+        </ul>
+      </div>
+
     </div>
+
+    <div style="margin-top:40px;" class="card">
+      <div class="h2">Payment & Booking</div>
+      <p class="p">
+        Packages are payable in advance. Individual lessons may be paid weekly.
+      </p>
+      <p class="p">
+        A regular weekly slot is recommended for steady progress.
+      </p>
+    </div>
+
   </div>
 </main>
 
 <footer class="footer">
-  <div class="container">© <span id="year"></span> Alicja • Piano Lessons in Coventry</div>
+  <div class="container">
+    © <span id="year"></span> Alicja • Piano Lessons in Coventry
+  </div>
 </footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
