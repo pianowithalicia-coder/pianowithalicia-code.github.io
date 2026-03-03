@@ -553,7 +553,7 @@ textarea:focus{
 }
 
 header {
-  padding: 8px 0;   /* increase if needed */
+  padding: 4px 0;   /* increase if needed */
 }
 
 .container.nav {
