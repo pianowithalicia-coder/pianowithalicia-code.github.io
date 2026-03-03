@@ -542,7 +542,7 @@ textarea:focus{
 }
 
 .brand-logo {
-  width: 80px;
+  width: 70px;
   height: auto;
 }
 
@@ -553,5 +553,12 @@ textarea:focus{
 }
 
 header {
-  padding: 12px 0;   /* increase if needed */
+  padding: 8px 0;   /* increase if needed */
+}
+
+.container.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;   /* THIS controls thickness */
 }
