@@ -526,3 +526,20 @@ textarea:focus{
   width: 42px;
   height: 42px;
 }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+}
+
+.brand-text {
+  font-weight: 600;
+}
