@@ -530,16 +530,20 @@ textarea:focus{
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   text-decoration: none;
   color: inherit;
 }
 
 .brand-logo {
-  width: 46px;
-  height: 46px;
+  width: 64px;
+  height: auto;
 }
 
 .brand-text {
   font-weight: 600;
+}
+
+header {
+  padding: 18px 0;   /* increase if needed */
 }
