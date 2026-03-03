@@ -536,7 +536,7 @@ textarea:focus{
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   text-decoration: none;
   color: inherit;
 }
