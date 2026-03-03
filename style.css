@@ -95,7 +95,7 @@ header{
 
 .navlinks{
   display:flex;
-  gap:28px;
+  gap:22px;
 }
 
 .navlinks a{
@@ -553,5 +553,5 @@ textarea:focus{
 }
 
 header {
-  padding: 18px 0;   /* increase if needed */
+  padding: 16px 0;   /* increase if needed */
 }
