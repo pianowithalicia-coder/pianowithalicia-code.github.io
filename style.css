@@ -95,7 +95,7 @@ header{
 
 .navlinks{
   display:flex;
-  gap:18px;
+  gap:28px;
 }
 
 .navlinks a{
@@ -103,6 +103,12 @@ header{
   border-radius:999px;
   color:var(--muted);
   transition:0.2s;
+}
+
+.navlinks a {
+  font-size: 16px;        /* slightly larger */
+  letter-spacing: 0.6px;  /* subtle elegance */
+  margin-left: 28px;      /* more spacing between tabs */
 }
 
 .navlinks a:hover,
@@ -541,7 +547,9 @@ textarea:focus{
 }
 
 .brand-text {
+  font-size: 18px;      /* increase from default */
   font-weight: 600;
+  letter-spacing: 0.4px;
 }
 
 header {
