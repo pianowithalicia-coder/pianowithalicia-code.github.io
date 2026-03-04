@@ -137,7 +137,7 @@ header{
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url("images/alicja-piano.jpg");
+  background-image: url("images/hero-piano.jpg");
   background-size: cover;
   background-position: right center;
   border-radius: 28px;
