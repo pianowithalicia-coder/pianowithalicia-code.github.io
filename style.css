@@ -609,3 +609,16 @@ header {
   );
   pointer-events: none;
 }
+
+.payment-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  flex-wrap:wrap;
+}
+
+.payment-action{
+  display:flex;
+  align-items:center;
+}
