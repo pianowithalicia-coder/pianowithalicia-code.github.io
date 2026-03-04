@@ -651,3 +651,32 @@ header {
     align-items:flex-start;
   }
 }
+
+/* Studio 88 section */
+
+.studio-block{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  margin-top:40px;
+}
+
+.studio-logo img{
+  width:160px;
+  height:auto;
+}
+
+.studio-text{
+  max-width:600px;
+}
+
+@media (max-width: 700px){
+  .studio-block{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .studio-logo img{
+    width:140px;
+  }
+}
