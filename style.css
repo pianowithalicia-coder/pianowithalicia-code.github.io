@@ -656,7 +656,7 @@ header {
 
 .studio-block{
   display:flex;
-  align-items:stretch;
+  align-items:flex-start;
   gap:40px;
   margin-top:40px;
 }
