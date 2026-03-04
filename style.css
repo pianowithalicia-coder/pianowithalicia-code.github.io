@@ -134,13 +134,26 @@ header{
 }
 
 /* Background image (behind everything) */
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background-image: url("images/hero-piano.jpg");
-  background-size:cover;
-  background-position:center;
-  z-index:0;
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/alicja-piano.jpg");
+  background-size: cover;
+  background-position: right center;
+  border-radius: 28px;
+}
+
+/* soft elegant fade for text readability */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(246,239,228,0.75) 0%,
+    rgba(246,239,228,0.35) 40%,
+    rgba(246,239,228,0.00) 70%
+  );
 }
 
 /* Content stays above */
