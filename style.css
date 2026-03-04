@@ -562,3 +562,32 @@ header {
   justify-content: space-between;
   padding: 10px 0;   /* THIS controls thickness */
 }
+
+/* HERO IMAGE: subtle premium overlay */
+.hero-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px; /* match your rounded style */
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+/* soft fade from left -> right so the text side feels calm */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 239, 228, 0.65) 0%,
+    rgba(246, 239, 228, 0.20) 45%,
+    rgba(246, 239, 228, 0.00) 70%
+  );
+  pointer-events: none;
+}
