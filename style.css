@@ -213,7 +213,7 @@ header{
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color:white;
   border:none;
-  box-shadow: 0 14px 30px rgba(200,131,103,0.35);
+  box-shadow: 0 14px 30px rgba(139,106,77,0.35);
 }
 
 .button.primary:hover{
