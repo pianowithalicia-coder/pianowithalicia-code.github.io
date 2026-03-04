@@ -141,7 +141,7 @@ header{
   background-size: cover;
   background-position: right center;
   border-radius: 28px;
-  filter: brightness(0.95);
+  filter: brightness(0.8);
 }
 
 /* soft elegant fade for text readability */
