@@ -8,7 +8,7 @@
 :root{
   --bg: #f5efe6;
   --bg-soft: #efe6db;
-  --card: rgba(255,255,255,0.92);
+  --card: rgba(255,253,250,0.92);
 
   --text: #2c2a26;
   --muted: #6b6259;
@@ -213,7 +213,7 @@ header{
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color:white;
   border:none;
-  box-shadow: 0 14px 30px rgba(139,106,77,0.35);
+  box-shadow: 0 14px 30px rgba(139,106,77,0.30);
 }
 
 .button.primary:hover{
@@ -221,7 +221,7 @@ header{
 }
 
 .button.secondary:hover{
-  background:rgba(200,131,103,0.15);
+  background:rgba(139,106,77,0.12);
 }
 
 .cta-row{
@@ -403,7 +403,7 @@ textarea:focus{
 }
 
 .highlight{
-  border: 2px solid #c79a7a;
+  border:2px solid var(--accent);
 }
 
 @media (max-width: 900px){
