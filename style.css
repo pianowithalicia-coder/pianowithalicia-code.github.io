@@ -16,6 +16,10 @@
 --accent: #8b6a4d;      /* warm piano brown */
 --accent-dark: #6e513a;
 
+--accent-rgb: 139,106,77;   /* same as #8b6a4d */
+--tint: rgba(var(--accent-rgb), 0.12);
+--tint-strong: rgba(var(--accent-rgb), 0.18);
+   
   --line: rgba(0,0,0,0.08);
   --radius: 22px;
   --maxw: 1100px;
@@ -28,8 +32,10 @@
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  color: var(--text);
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  color:var(--text);
+  background: radial-gradient(1200px 700px at 20% 0%, var(--tint), transparent 55%),
+              radial-gradient(900px 600px at 90% 10%, var(--tint-strong), transparent 50%),
+              var(--bg);
   line-height:1.6;
 }
 
@@ -75,9 +81,9 @@ img{
 header{
   position:sticky;
   top:0;
-  background: rgba(245,239,230,0.95);
-  backdrop-filter: blur(6px);
-  border-bottom:1px solid var(--line);
+  background: rgba(245,239,230,0.92); /* warm ivory */
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
   z-index:100;
 }
 
@@ -99,10 +105,11 @@ header{
 }
 
 .navlinks a{
-  padding:8px 14px;
-  border-radius:999px;
-  color:var(--muted);
-  transition:0.2s;
+  color: var(--muted);
+  text-decoration:none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  transition: 0.2s;
 }
 
 .navlinks a {
@@ -111,10 +118,14 @@ header{
   margin-left: 28px;      /* more spacing between tabs */
 }
 
-.navlinks a:hover,
+.navlinks a:hover{
+  background: var(--tint);
+  color: var(--text);
+}
+
 .navlinks a.active{
-  background:rgba(200,131,103,0.15);
-  color:var(--text);
+  background: var(--tint-strong);
+  color: var(--text);
 }
 
 /* ---------- Hero Section ---------- */
@@ -268,7 +279,7 @@ header{
 }
 
 .table th{
-  background:rgba(200,131,103,0.12);
+  background:rgba(139,106,77,0.12);
 }
 
 /* ---------- Forms ---------- */
@@ -286,7 +297,7 @@ input:focus,
 textarea:focus{
   outline:none;
   border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(200,131,103,0.2);
+  box-shadow:0 0 0 3px rgba(139,106,77,0.2);
 }
 
 /* ---------- Footer ---------- */
