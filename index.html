@@ -143,54 +143,293 @@
 </section>
 
 <script>
-  let reviewsIndex = 0;
+(() => {
+  const VIEWPORT_SELECTOR = '.reviews-viewport';
+  const TRACK_ID = 'reviewsTrack';
+  const AUTOPLAY_MS = 5000;
+
+  let index = 0;              // index within track (including clones)
+  let perView = 3;
+  let originals = [];
+  let autoplayTimer = null;
+
+  // drag/swipe state
+  let isPointerDown = false;
+  let isDragging = false;
+  let startX = 0;
+  let startTranslate = 0;
+  let currentTranslate = 0;
 
   function getPerView(){
     return window.matchMedia('(max-width: 900px)').matches ? 1 : 3;
   }
 
-  function reviewsUpdate(){
-    const track = document.getElementById('reviewsTrack');
+  function getTrack(){
+    return document.getElementById(TRACK_ID);
+  }
+
+  function getViewport(){
+    const track = getTrack();
+    if(!track) return null;
+    return track.closest(VIEWPORT_SELECTOR);
+  }
+
+  function getGap(track){
+    const gap = parseFloat(getComputedStyle(track).gap);
+    return Number.isFinite(gap) ? gap : 18;
+  }
+
+  function getCardWidth(track){
+    const card = track.querySelector('.review-card');
+    return card ? card.getBoundingClientRect().width : 0;
+  }
+
+  function setTransition(track, on){
+    track.style.transition = on ? 'transform 350ms ease' : 'none';
+  }
+
+  function setTranslate(track, px){
+    track.style.transform = `translateX(-${px}px)`;
+    currentTranslate = px;
+  }
+
+  function baseOffset(track, idx){
+    const gap = getGap(track);
+    const w = getCardWidth(track);
+    return idx * (w + gap);
+  }
+
+  function removeClones(track){
+    track.querySelectorAll('[data-clone="1"]').forEach(el => el.remove());
+  }
+
+  function setupClones(){
+    const track = getTrack();
     if(!track) return;
 
-    const total = track.querySelectorAll('.review-card').length;
-    const perView = getPerView();
+    // store originals once (or refresh if DOM changed)
+    originals = Array.from(track.querySelectorAll('.review-card')).filter(c => c.getAttribute('data-clone') !== '1');
 
+    // clear any old clones then rebuild
+    removeClones(track);
+
+    perView = getPerView();
+
+    // number of clones on each side:
+    // perView ensures the 3-wide (or 1-wide) view loops smoothly.
+    const cloneCount = Math.min(perView, originals.length);
+
+    const headClones = originals.slice(0, cloneCount).map(node => {
+      const c = node.cloneNode(true);
+      c.setAttribute('data-clone', '1');
+      return c;
+    });
+
+    const tailClones = originals.slice(-cloneCount).map(node => {
+      const c = node.cloneNode(true);
+      c.setAttribute('data-clone', '1');
+      return c;
+    });
+
+    // prepend tail clones, append head clones
+    tailClones.forEach(c => track.insertBefore(c, track.firstChild));
+    headClones.forEach(c => track.appendChild(c));
+
+    // start at first "real" card set
+    index = cloneCount;
+
+    // set CSS var if you use it
     track.style.setProperty('--perView', perView);
 
-    // Max starting index so we never scroll past the last full set
-    const maxIndex = Math.max(0, total - perView);
-    reviewsIndex = Math.min(reviewsIndex, maxIndex);
+    // snap into position without animation
+    setTransition(track, false);
+    setTranslate(track, baseOffset(track, index));
 
-    // Slide by 1 card each time
-    const gap = parseFloat(getComputedStyle(track).gap) || 18;
-    const card = track.querySelector('.review-card');
-    const cardWidth = card ? card.getBoundingClientRect().width : 0;
-
-    const offset = reviewsIndex * (cardWidth + gap);
-    track.style.transform = `translateX(-${offset}px)`;
+    // re-enable transition
+    requestAnimationFrame(() => setTransition(track, true));
   }
 
-  function reviewsNext(){
-    const track = document.getElementById('reviewsTrack');
-    const total = track.querySelectorAll('.review-card').length;
-    const perView = getPerView();
-    const maxIndex = Math.max(0, total - perView);
+  function goTo(newIndex){
+    const track = getTrack();
+    if(!track) return;
 
-    reviewsIndex = Math.min(reviewsIndex + 1, maxIndex);
-    reviewsUpdate();
+    index = newIndex;
+    setTransition(track, true);
+    setTranslate(track, baseOffset(track, index));
   }
 
-  function reviewsPrev(){
-    reviewsIndex = Math.max(reviewsIndex - 1, 0);
-    reviewsUpdate();
+  function next(){
+    const track = getTrack();
+    if(!track) return;
+
+    goTo(index + 1);
   }
 
-  window.addEventListener('resize', () => {
-    // small delay lets layout settle before measuring widths
-    setTimeout(reviewsUpdate, 60);
-  });
-  window.addEventListener('load', () => setTimeout(reviewsUpdate, 60));
+  function prev(){
+    const track = getTrack();
+    if(!track) return;
+
+    goTo(index - 1);
+  }
+
+  // After animation ends, if we are on a clone, jump to matching real card WITHOUT animation
+  function handleLoopSnap(){
+    const track = getTrack();
+    if(!track) return;
+
+    const cloneCount = Math.min(perView, originals.length);
+    const totalWithClones = originals.length + cloneCount * 2;
+
+    // If we move past the last real cards into the head clones
+    if(index >= originals.length + cloneCount){
+      // snap back to first real position
+      index = cloneCount;
+      setTransition(track, false);
+      setTranslate(track, baseOffset(track, index));
+      requestAnimationFrame(() => setTransition(track, true));
+      return;
+    }
+
+    // If we move past the first real cards into the tail clones
+    if(index < cloneCount){
+      // snap to last real position
+      index = originals.length + cloneCount - 1;
+      setTransition(track, false);
+      setTranslate(track, baseOffset(track, index));
+      requestAnimationFrame(() => setTransition(track, true));
+      return;
+    }
+
+    // safety (rare)
+    if(index < 0) index = 0;
+    if(index >= totalWithClones) index = totalWithClones - 1;
+  }
+
+  function stopAutoplay(){
+    if(autoplayTimer){
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      // don’t auto-advance while dragging
+      if(!isPointerDown && !isDragging) next();
+    }, AUTOPLAY_MS);
+  }
+
+  // Swipe/drag
+  function onPointerDown(e){
+    const track = getTrack();
+    const viewport = getViewport();
+    if(!track || !viewport) return;
+
+    isPointerDown = true;
+    isDragging = false;
+
+    startX = e.clientX;
+    startTranslate = baseOffset(track, index);
+
+    // disable transition while dragging
+    setTransition(track, false);
+    track.classList.add('is-dragging');
+
+    // capture pointer so we still get events if finger moves off
+    viewport.setPointerCapture?.(e.pointerId);
+  }
+
+  function onPointerMove(e){
+    const track = getTrack();
+    if(!track || !isPointerDown) return;
+
+    const dx = e.clientX - startX;
+
+    // if user drags enough, mark as dragging
+    if(Math.abs(dx) > 6) isDragging = true;
+
+    // move with finger
+    const newPos = startTranslate - dx;
+    setTranslate(track, newPos);
+  }
+
+  function onPointerUp(){
+    const track = getTrack();
+    if(!track) return;
+
+    if(!isPointerDown) return;
+    isPointerDown = false;
+
+    const gap = getGap(track);
+    const w = getCardWidth(track);
+    const step = w + gap;
+
+    const moved = currentTranslate - baseOffset(track, index);
+
+    // moved > 0 means we dragged left (towards next), moved < 0 dragged right (towards prev)
+    const THRESH = Math.min(80, step * 0.25);
+
+    setTransition(track, true);
+    track.classList.remove('is-dragging');
+
+    if(isDragging){
+      if(moved > THRESH){
+        // dragged left → next
+        goTo(index + 1);
+      } else if(moved < -THRESH){
+        // dragged right → prev
+        goTo(index - 1);
+      } else {
+        // snap back
+        setTranslate(track, baseOffset(track, index));
+      }
+    } else {
+      // simple tap/no drag → snap back
+      setTranslate(track, baseOffset(track, index));
+    }
+
+    isDragging = false;
+  }
+
+  // Expose your existing button handlers (so your HTML onclick still works)
+  window.reviewsNext = () => { next(); };
+  window.reviewsPrev = () => { prev(); };
+
+  function init(){
+    const track = getTrack();
+    const viewport = getViewport();
+    if(!track || !viewport) return;
+
+    setupClones();
+    startAutoplay();
+
+    // pause autoplay when user interacts
+    viewport.addEventListener('mouseenter', stopAutoplay);
+    viewport.addEventListener('mouseleave', startAutoplay);
+    viewport.addEventListener('focusin', stopAutoplay);
+    viewport.addEventListener('focusout', startAutoplay);
+
+    // transition end snap for infinite loop
+    track.addEventListener('transitionend', handleLoopSnap);
+
+    // swipe
+    viewport.addEventListener('pointerdown', onPointerDown);
+    viewport.addEventListener('pointermove', onPointerMove);
+    viewport.addEventListener('pointerup', onPointerUp);
+    viewport.addEventListener('pointercancel', onPointerUp);
+
+    // responsive rebuild when perView changes
+    window.addEventListener('resize', () => {
+      // small delay so layout settles
+      setTimeout(() => {
+        setupClones();
+      }, 80);
+    });
+  }
+
+  window.addEventListener('load', () => setTimeout(init, 50));
+})();
 </script>
   
   <!-- SERVICES -->
