@@ -669,7 +669,7 @@ header {
 
 .studio-block{
   display:flex;
-  align-items:flex-start;     /* top-align columns */
+  align-items:flex-start;     /* top-align logo and text */
   gap:40px;
   margin-top:40px;
 }
@@ -677,12 +677,10 @@ header {
 /* logo column */
 .studio-logo{
   flex:0 0 auto;
-  margin:0;
-  padding:0;
 }
 
 .studio-logo img{
-  display:block;              /* removes inline-image baseline weirdness */
+  display:block;
   width:auto;
   height:auto;
   max-height:260px;
@@ -693,18 +691,11 @@ header {
 /* text column */
 .studio-text{
   max-width:600px;
-  margin:0;
-  padding:0;
 }
 
-/* KEY FIX: remove the default top margin from the first text element */
+/* remove default top margin from first heading */
 .studio-text > :first-child{
-  margin-top:0 !important;
-}
-
-/* (Optional) also remove top margin from first paragraph if it happens instead */
-.studio-text > p:first-of-type{
-  margin-top:0 !important;
+  margin-top:0;
 }
 
 /* ===============================
@@ -712,16 +703,27 @@ header {
 ================================ */
 
 @media (max-width:700px){
+
   .studio-block{
     flex-direction:column;
-    align-items:center;
+    align-items:center;      /* center block contents */
     text-align:center;
-    gap:24px;
+    gap:28px;
+  }
+
+  .studio-logo{
+    width:100%;
+    display:flex;
+    justify-content:center;  /* centers the logo */
   }
 
   .studio-logo img{
+    width:180px;             /* bigger logo on phone */
     max-height:none;
-    width:160px;             /* slightly bigger on mobile */
+  }
+
+  .studio-text{
+    max-width:100%;
   }
 }
 
