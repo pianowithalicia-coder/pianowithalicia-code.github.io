@@ -817,7 +817,3 @@ header {
   }
 }
 
-@media (max-width: 680px){
-  .brand{ margin: 0 !important; padding: 0 !important; }
-  .navlinks{ margin-left: 0 !important; }
-}
