@@ -1075,62 +1075,69 @@ header {
 }
 
 /* =========================
-   MOBILE NAV: active pill wraps text (same as desktop)
+   MOBILE NAV (CLEAN, NO SCROLL, ALL TABS FIT)
 ========================= */
 @media (max-width: 680px){
 
-  /* Tabs row */
+  /* Header layout: brand row on top, tabs row underneath */
+  header .container.nav{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 10px 12px !important;      /* controls left/right edge */
+  }
+
+  /* Brand row */
+  header .container.nav .brand{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 !important;
+  }
+
+  header .container.nav .brand-logo{
+    width: 56px !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  header .container.nav .brand-text{
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  /* Tabs: 4 equal columns, starts from LEFT, no scroll */
   header .container.nav .navlinks{
-    display:flex !important;
-    flex-wrap:nowrap !important;
-    justify-content:space-between !important;
-    align-items:center !important;
-
-    width:100% !important;
-    margin:0 !important;
-    padding:0 !important;
-
-    gap:10px !important;         /* adjust spacing here */
-    overflow:visible !important;  /* no scroll */
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 6px !important;                /* <<< smaller spacing between tabs */
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;       /* no scrolling */
   }
 
-  /* Each tab behaves like a normal “pill” around its text */
+  /* Each tab fills its cell so the active pill always fits */
   header .container.nav .navlinks a{
-    flex:0 0 auto !important;
-    display:inline-flex !important;
-    align-items:center !important;
-    justify-content:center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-    padding:10px 14px !important;
-    border-radius:999px !important;
+    width: 100% !important;
+    padding: 10px 6px !important;
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+    text-align: center !important;
 
-    font-size:15px !important;
-    line-height:1 !important;
-
-    white-space:nowrap !important;   /* prevents Ho/me splitting */
-    word-break:keep-all !important;
-    overflow-wrap:normal !important;
-    hyphens:none !important;
-
-    width:auto !important;
-    height:auto !important;
-    min-width:0 !important;
-
-    position:relative !important;
+    white-space: nowrap !important;     /* keep short labels on one line */
+    border-radius: 999px !important;
+    margin: 0 !important;
   }
 
-  /* 🔥 Kill ANY circle/short-pill pseudo elements */
-  header .container.nav .navlinks a.active:before,
-  header .container.nav .navlinks a.active:after,
-  header .container.nav .navlinks a.active::before,
-  header .container.nav .navlinks a.active::after{
-    content:none !important;
-    display:none !important;
-  }
-
-  /* Active pill: the <a> itself */
+  /* Active pill: guaranteed full width of its grid cell */
   header .container.nav .navlinks a.active{
-    background: rgba(0,0,0,0.08) !important;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.06) !important;
+    width: 100% !important;
   }
 }
