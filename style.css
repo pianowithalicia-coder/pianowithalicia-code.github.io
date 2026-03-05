@@ -663,41 +663,54 @@ header {
   }
 }
 
-/* Studio 88 section */
+/* ===============================
+   Studio 88 section
+================================ */
 
 .studio-block{
   display:flex;
-  align-items:flex-start;
+  align-items:flex-start;     /* align logo and text from the top */
   gap:40px;
   margin-top:40px;
 }
 
+/* logo column */
 .studio-logo{
-  display:flex;
-  align-items:stretch;
+  flex:0 0 auto;
 }
 
 .studio-logo img{
-  height:100%;
+  display:block;
   max-height:260px;
   width:auto;
+  height:auto;
   object-fit:contain;
   box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
+/* text column */
 .studio-text{
   max-width:600px;
 }
 
-@media (max-width: 700px){
+/* ===============================
+   Mobile layout
+================================ */
+
+@media (max-width:700px){
+
   .studio-block{
     flex-direction:column;
+    align-items:center;
     text-align:center;
+    gap:24px;
   }
 
   .studio-logo img{
+    max-height:none;
     width:140px;
   }
+
 }
 
 
