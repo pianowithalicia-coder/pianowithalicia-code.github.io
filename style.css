@@ -1073,3 +1073,64 @@ header {
     box-shadow: 0 10px 22px rgba(0,0,0,0.06) !important;
   }
 }
+
+/* =========================
+   MOBILE NAV: active pill wraps text (same as desktop)
+========================= */
+@media (max-width: 680px){
+
+  /* Tabs row */
+  header .container.nav .navlinks{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+
+    gap:10px !important;         /* adjust spacing here */
+    overflow:visible !important;  /* no scroll */
+  }
+
+  /* Each tab behaves like a normal “pill” around its text */
+  header .container.nav .navlinks a{
+    flex:0 0 auto !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    padding:10px 14px !important;
+    border-radius:999px !important;
+
+    font-size:15px !important;
+    line-height:1 !important;
+
+    white-space:nowrap !important;   /* prevents Ho/me splitting */
+    word-break:keep-all !important;
+    overflow-wrap:normal !important;
+    hyphens:none !important;
+
+    width:auto !important;
+    height:auto !important;
+    min-width:0 !important;
+
+    position:relative !important;
+  }
+
+  /* 🔥 Kill ANY circle/short-pill pseudo elements */
+  header .container.nav .navlinks a.active:before,
+  header .container.nav .navlinks a.active:after,
+  header .container.nav .navlinks a.active::before,
+  header .container.nav .navlinks a.active::after{
+    content:none !important;
+    display:none !important;
+  }
+
+  /* Active pill: the <a> itself */
+  header .container.nav .navlinks a.active{
+    background: rgba(0,0,0,0.08) !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.06) !important;
+  }
+}
