@@ -900,3 +900,10 @@ header {
   .desktop-label{ display:none; }
   .mobile-label{ display:inline; }
 }
+
+@media (max-width: 680px){
+  header .container{
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+}
