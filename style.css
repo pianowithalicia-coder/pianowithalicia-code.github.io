@@ -873,60 +873,80 @@ header {
   }
 }
 
-/* =========================================================
-   MOBILE NAV — FORCE NO SCROLL + EQUAL TABS (FINAL OVERRIDE)
-========================================================= */
+/* =========================
+   MOBILE NAV (CLEAN, NO SCROLL, NO WORD SPLIT)
+========================= */
 @media (max-width: 680px){
 
-  /* Force header layout into 2 rows */
+  /* make header container a bit tighter on mobile */
   header .container.nav{
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:stretch !important;
-    gap:10px !important;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    padding:10px 10px; /* reduce side padding so tabs fit */
   }
 
-  /* Tabs row: ABSOLUTELY NO SCROLL */
+  /* brand row */
+  header .container.nav .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:0;
+  }
+
+  header .container.nav .brand-logo{
+    width:56px;
+    height:auto;
+    flex:0 0 auto;
+  }
+
+  header .container.nav .brand-text{
+    font-size:16px;
+    line-height:1.2;
+  }
+
+  /* tabs row: one line, no scroll */
   header .container.nav .navlinks{
-    display:flex !important;
-    width:100% !important;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:space-between; /* spreads evenly */
+    align-items:center;
 
-    overflow: hidden !important;          /* kills scrolling */
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: auto !important;
+    width:100%;
+    margin:0;
+    padding:0;
 
-    flex-wrap: nowrap !important;         /* one row */
-    justify-content: space-between !important;
-
-    margin:0 !important;
-    padding:0 !important;
-    gap:6px !important;
-
-    /* remove any edge-fade/masks from earlier code */
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
+    gap:6px;               /* smaller spacing between tabs */
+    overflow:visible;      /* IMPORTANT: no scroll */
   }
 
-  /* Each tab gets equal width, cannot cause overflow */
+  /* each tab gets equal width; prevent splitting */
   header .container.nav .navlinks a{
-    flex: 1 1 0 !important;               /* equal widths */
-    min-width: 0 !important;              /* allows shrinking */
-    display:flex !important;
-    align-items:center !important;
-    justify-content:center !important;
+    flex:1 1 0;
+    min-width:0;
 
-    padding:12px 6px !important;
-    font-size:15px !important;
-    line-height:1.1 !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    text-align:center !important;
-    white-space: normal !important;       /* allow 2 lines if needed */
-    word-break: break-word !important;    /* prevents overflow */
-    border-radius:999px !important;
+    padding:10px 8px;
+    font-size:14px;
+    line-height:1.1;
+
+    text-align:center;
+
+    /* stop “Ho me / Abo ut” behaviour */
+    white-space:nowrap;        /* keep the label on one line */
+    word-break:keep-all;       /* don’t break inside words */
+    overflow-wrap:normal;      /* don’t wrap anywhere */
+    hyphens:none;              /* avoid auto hyphenation */
+
+    border-radius:999px;
   }
 
-  /* Active pill covers wrapped text */
+  /* active pill always fits */
   header .container.nav .navlinks a.active{
-    height:auto !important;
+    display:flex;          /* ensure background wraps properly */
   }
 }
