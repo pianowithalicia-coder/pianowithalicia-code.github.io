@@ -669,12 +669,11 @@ header {
 
 .studio-block{
   display:flex;
-  align-items:flex-start;     /* top-align logo and text */
+  align-items:flex-start;     /* top-align logo + text columns */
   gap:40px;
   margin-top:40px;
 }
 
-/* logo column */
 .studio-logo{
   flex:0 0 auto;
 }
@@ -691,11 +690,21 @@ header {
 /* text column */
 .studio-text{
   max-width:600px;
+  padding-top:0;
+  margin-top:0;
 }
 
-/* remove default top margin from first heading */
+/* IMPORTANT: remove top margin from the first heading in this section */
+.studio-text h1,
+.studio-text h2,
+.studio-text h3,
+.studio-text .h2{
+  margin-top:0 !important;
+}
+
+/* also remove top margin from the first direct child (extra safety) */
 .studio-text > :first-child{
-  margin-top:0;
+  margin-top:0 !important;
 }
 
 /* ===============================
@@ -706,7 +715,7 @@ header {
 
   .studio-block{
     flex-direction:column;
-    align-items:center;      /* center block contents */
+    align-items:center;
     text-align:center;
     gap:28px;
   }
@@ -714,11 +723,11 @@ header {
   .studio-logo{
     width:100%;
     display:flex;
-    justify-content:center;  /* centers the logo */
+    justify-content:center;
   }
 
   .studio-logo img{
-    width:180px;             /* bigger logo on phone */
+    width:180px;
     max-height:none;
   }
 
