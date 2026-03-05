@@ -13,8 +13,8 @@
   --text: #2c2a26;
   --muted: #6b6259;
 
---accent: #8b6a4d;      /* warm piano brown */
---accent-dark: #6e513a;
+--accent: #7a5a40;      /* warm piano brown */
+--accent-dark: #5f4631;
 
 --accent-rgb: 139,106,77;   /* same as #8b6a4d */
 --tint: rgba(var(--accent-rgb), 0.12);
