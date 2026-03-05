@@ -1005,3 +1005,10 @@ header {
     box-shadow: 0 10px 22px rgba(0,0,0,0.06);
   }
 }
+
+@media (max-width: 680px){
+  header .container.nav{
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
