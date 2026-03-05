@@ -961,3 +961,60 @@ header {
     border-radius: 999px;
   }
 }
+
+/* ---------------------------
+   MOBILE: tighten Contact page spacing
+--------------------------- */
+@media (max-width: 680px){
+
+  /* headings */
+  .h1{
+    font-size: 44px;     /* was likely bigger */
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .lead{
+    font-size: 18px;
+    line-height: 1.45;
+  }
+
+  /* section spacing */
+  .section{
+    padding-top: 22px;
+    padding-bottom: 26px;
+  }
+
+  /* cards */
+  .card{
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  /* form fields */
+  label{
+    font-size: 14px;
+  }
+
+  input, textarea, select{
+    font-size: 16px;     /* keep 16px to prevent iOS zoom */
+    padding: 12px 14px;
+  }
+
+  textarea{
+    min-height: 120px;
+  }
+
+  /* if your contact page uses .split grid, stack nicely */
+  .split{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* make embedded widgets behave */
+  .map, iframe{
+    width: 100%;
+    max-width: 100%;
+  }
+}
