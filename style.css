@@ -703,148 +703,136 @@ header {
 
 
 /* =========================================================
-   MOBILE (≤680px) — CLEAN SINGLE BLOCK
+   MOBILE (≤680px) — CLEAN FINAL
    - Brand row on top
-   - Tabs: one-row, swipeable, tight spacing, flush-left
-   - Equal page margins
-   - Contact page sizing tweaks
-   - Mobile label swap
+   - Tabs row underneath (NO SCROLL, equal spacing)
+   - Tight, consistent page margins
+   - Contact page spacing tweaks
+   - Mobile label swap (Lesson Options -> Prices)
    - WhatsApp button position
 ========================================================= */
+
+/* label swap (desktop vs mobile) */
+.mobile-label{ display:none; }
+
 @media (max-width: 680px){
 
-  /* ---------- Global page margins (equal left/right) ---------- */
+  /* show shorter labels on mobile */
+  .desktop-label{ display:none; }
+  .mobile-label{ display:inline; }
+
+  /* consistent page margins */
   .container{
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
   }
 
   /* ---------- Header layout ---------- */
   header .container.nav{
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-
-    gap: 8px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:10px !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
   }
 
-  /* Brand row */
+  /* brand row */
   header .container.nav .brand{
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
   }
 
   header .container.nav .brand-logo{
-    width: 56px !important;
-    height: auto !important;
-    flex: 0 0 auto !important;
+    width:56px !important;
+    height:auto !important;
+    flex:0 0 auto !important;
   }
 
   header .container.nav .brand-text{
-    font-size: 16px !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;
+    font-size:16px !important;
+    line-height:1.2 !important;
+    white-space:normal !important;
   }
 
-  /* ---------- Tabs row: ONE line, flush-left, tight gaps ---------- */
+  /* ---------- Tabs row (NO SCROLL, equal widths) ---------- */
   header .container.nav .navlinks{
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-
-    /* flush-left under logo: remove any leftover indent */
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-
-    gap: 4px !important;             /* tighter spacing */
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none;           /* Firefox */
+    display:flex !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    gap:6px !important;                 /* small gap only */
   }
-  header .container.nav .navlinks::-webkit-scrollbar{ display:none; }
 
   header .container.nav .navlinks a{
-    flex: 0 0 auto !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    flex:1 1 0 !important;              /* equal width tabs */
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
 
-    padding: 10px 10px !important;
-    font-size: 15px !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
+    padding:12px 6px !important;
+    font-size:15px !important;
+    line-height:1.1 !important;
+    text-align:center !important;
 
-    border-radius: 999px !important;
+    border-radius:999px !important;
+    white-space:nowrap !important;      /* keep labels tidy */
   }
 
-  /* Active pill always fully covers text */
+  /* ensure active pill covers full text */
   header .container.nav .navlinks a.active{
-    padding: 10px 10px !important;   /* keep same as normal to avoid mismatch */
-    border-radius: 999px !important;
+    padding:12px 6px !important;
+    border-radius:999px !important;
   }
 
-  /* ---------- Mobile nav label swap ---------- */
-  .mobile-label{ display: inline !important; }
-  .desktop-label{ display: none !important; }
-
-  /* ---------- Contact page: tighter spacing & better fit ---------- */
+  /* ---------- Contact page sizing & layout ---------- */
   .h1{
-    font-size: 44px;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-size:44px;
+    line-height:1.05;
+    letter-spacing:-0.02em;
   }
 
   .lead{
-    font-size: 18px;
-    line-height: 1.45;
+    font-size:18px;
+    line-height:1.45;
   }
 
   .section{
-    padding-top: 22px;
-    padding-bottom: 26px;
+    padding-top:22px;
+    padding-bottom:26px;
   }
 
   .card{
-    padding: 18px;
-    border-radius: 18px;
-    width: 100%;
+    padding:18px;
+    border-radius:18px;
+    width:100%;
   }
 
-  label{ font-size: 14px; }
+  label{ font-size:14px; }
 
   input, textarea, select{
-    font-size: 16px;     /* prevents iOS zoom */
-    padding: 12px 14px;
+    font-size:16px;     /* prevents iOS zoom */
+    padding:12px 14px;
   }
 
-  textarea{ min-height: 120px; }
+  textarea{ min-height:120px; }
 
   .split{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
   }
 
   .map, iframe{
-    width: 100%;
-    max-width: 100%;
+    width:100%;
+    max-width:100%;
   }
 
-  /* ---------- WhatsApp button position ---------- */
+  /* ---------- WhatsApp bubble position ---------- */
   .wa-float{
-    right: 14px;
-    bottom: 18px;
+    right:14px;
+    bottom:18px;
   }
-}
-
-.mobile-label{ display:none; }
-@media (max-width:680px){
-  .desktop-label{ display:none; }
-  .mobile-label{ display:inline; }
 }
