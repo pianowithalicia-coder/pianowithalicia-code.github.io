@@ -189,7 +189,7 @@
   }
 
   function setTranslate(track, px){
-    track.style.transform = `translateX(-${px}px)`;
+    track.style.transform = `translate3d(-${px}px, 0, 0)`;
     currentTranslate = px;
   }
 
@@ -197,6 +197,19 @@
     const gap = getGap(track);
     const w = getCardWidth(track);
     return idx * (w + gap);
+  }
+
+  function hardSnapTo(track, idx){
+    // Snap WITHOUT any visible jump:
+    // 1) turn off transition
+    // 2) set translate
+    // 3) force reflow so browser "commits" it
+    // 4) turn transition back on
+    index = idx;
+    setTransition(track, false);
+    setTranslate(track, baseOffset(track, index));
+    track.offsetHeight; // force reflow (prevents “rewind flash”)
+    requestAnimationFrame(() => setTransition(track, true));
   }
 
   function removeClones(track){
@@ -207,16 +220,13 @@
     const track = getTrack();
     if(!track) return;
 
-    // store originals once (or refresh if DOM changed)
-    originals = Array.from(track.querySelectorAll('.review-card')).filter(c => c.getAttribute('data-clone') !== '1');
+    // originals = real cards only
+    originals = Array.from(track.querySelectorAll('.review-card'))
+      .filter(c => c.getAttribute('data-clone') !== '1');
 
-    // clear any old clones then rebuild
     removeClones(track);
 
     perView = getPerView();
-
-    // number of clones on each side:
-    // perView ensures the 3-wide (or 1-wide) view loops smoothly.
     const cloneCount = Math.min(perView, originals.length);
 
     const headClones = originals.slice(0, cloneCount).map(node => {
@@ -231,78 +241,65 @@
       return c;
     });
 
-    // prepend tail clones, append head clones
+    // Track order becomes: [tail clones] + [originals] + [head clones]
     tailClones.forEach(c => track.insertBefore(c, track.firstChild));
     headClones.forEach(c => track.appendChild(c));
 
-    // start at first "real" card set
+    // Start at first REAL item
     index = cloneCount;
-
-    // set CSS var if you use it
     track.style.setProperty('--perView', perView);
 
-    // snap into position without animation
+    // snap into place (no animation on load)
     setTransition(track, false);
     setTranslate(track, baseOffset(track, index));
-
-    // re-enable transition
+    track.offsetHeight; // commit
     requestAnimationFrame(() => setTransition(track, true));
   }
 
   function goTo(newIndex){
     const track = getTrack();
     if(!track) return;
-
     index = newIndex;
     setTransition(track, true);
     setTranslate(track, baseOffset(track, index));
   }
 
   function next(){
-    const track = getTrack();
-    if(!track) return;
-
     goTo(index + 1);
   }
 
   function prev(){
-    const track = getTrack();
-    if(!track) return;
-
     goTo(index - 1);
   }
 
-  // After animation ends, if we are on a clone, jump to matching real card WITHOUT animation
-  function handleLoopSnap(){
+  function handleLoopSnap(e){
+    // only respond to the transform transition
+    if(e && e.propertyName && e.propertyName !== 'transform') return;
+
     const track = getTrack();
     if(!track) return;
 
     const cloneCount = Math.min(perView, originals.length);
-    const totalWithClones = originals.length + cloneCount * 2;
 
-    // If we move past the last real cards into the head clones
-    if(index >= originals.length + cloneCount){
-      // snap back to first real position
-      index = cloneCount;
-      setTransition(track, false);
-      setTranslate(track, baseOffset(track, index));
-      requestAnimationFrame(() => setTransition(track, true));
+    // We’re looking at the “start index” of the viewport.
+    // When index moves into clones, snap to the equivalent real index,
+    // but keep the SAME visible cards (so 123 stays 123).
+    const firstReal = cloneCount;                      // index where real 1 starts
+    const afterLastReal = originals.length + cloneCount; // first head-clone start
+
+    // if we moved into head clones (end → continues into clones like 123)
+    if(index >= afterLastReal){
+      hardSnapTo(track, firstReal); // snap back to real 1
       return;
     }
 
-    // If we move past the first real cards into the tail clones
-    if(index < cloneCount){
-      // snap to last real position
-      index = originals.length + cloneCount - 1;
-      setTransition(track, false);
-      setTranslate(track, baseOffset(track, index));
-      requestAnimationFrame(() => setTransition(track, true));
+    // if we moved into tail clones (prev from start)
+    if(index < firstReal){
+      // last real start index
+      const lastRealStart = originals.length + cloneCount - 1;
+      hardSnapTo(track, lastRealStart);
       return;
     }
-
-    // safety (rare)
-    if(index < 0) index = 0;
-    if(index >= totalWithClones) index = totalWithClones - 1;
   }
 
   function stopAutoplay(){
@@ -315,7 +312,6 @@
   function startAutoplay(){
     stopAutoplay();
     autoplayTimer = setInterval(() => {
-      // don’t auto-advance while dragging
       if(!isPointerDown && !isDragging) next();
     }, AUTOPLAY_MS);
   }
@@ -326,17 +322,17 @@
     const viewport = getViewport();
     if(!track || !viewport) return;
 
+    stopAutoplay();
+
     isPointerDown = true;
     isDragging = false;
 
     startX = e.clientX;
     startTranslate = baseOffset(track, index);
 
-    // disable transition while dragging
     setTransition(track, false);
     track.classList.add('is-dragging');
 
-    // capture pointer so we still get events if finger moves off
     viewport.setPointerCapture?.(e.pointerId);
   }
 
@@ -345,11 +341,8 @@
     if(!track || !isPointerDown) return;
 
     const dx = e.clientX - startX;
-
-    // if user drags enough, mark as dragging
     if(Math.abs(dx) > 6) isDragging = true;
 
-    // move with finger
     const newPos = startTranslate - dx;
     setTranslate(track, newPos);
   }
@@ -357,8 +350,8 @@
   function onPointerUp(){
     const track = getTrack();
     if(!track) return;
-
     if(!isPointerDown) return;
+
     isPointerDown = false;
 
     const gap = getGap(track);
@@ -366,33 +359,24 @@
     const step = w + gap;
 
     const moved = currentTranslate - baseOffset(track, index);
-
-    // moved > 0 means we dragged left (towards next), moved < 0 dragged right (towards prev)
     const THRESH = Math.min(80, step * 0.25);
 
     setTransition(track, true);
     track.classList.remove('is-dragging');
 
     if(isDragging){
-      if(moved > THRESH){
-        // dragged left → next
-        goTo(index + 1);
-      } else if(moved < -THRESH){
-        // dragged right → prev
-        goTo(index - 1);
-      } else {
-        // snap back
-        setTranslate(track, baseOffset(track, index));
-      }
+      if(moved > THRESH)      goTo(index + 1);
+      else if(moved < -THRESH) goTo(index - 1);
+      else                   setTranslate(track, baseOffset(track, index));
     } else {
-      // simple tap/no drag → snap back
       setTranslate(track, baseOffset(track, index));
     }
 
     isDragging = false;
+    startAutoplay();
   }
 
-  // Expose your existing button handlers (so your HTML onclick still works)
+  // Keep your existing HTML onclick handlers
   window.reviewsNext = () => { next(); };
   window.reviewsPrev = () => { prev(); };
 
@@ -404,13 +388,13 @@
     setupClones();
     startAutoplay();
 
-    // pause autoplay when user interacts
+    // Pause autoplay on hover/focus (desktop)
     viewport.addEventListener('mouseenter', stopAutoplay);
     viewport.addEventListener('mouseleave', startAutoplay);
     viewport.addEventListener('focusin', stopAutoplay);
     viewport.addEventListener('focusout', startAutoplay);
 
-    // transition end snap for infinite loop
+    // loop snap (invisible)
     track.addEventListener('transitionend', handleLoopSnap);
 
     // swipe
@@ -419,16 +403,15 @@
     viewport.addEventListener('pointerup', onPointerUp);
     viewport.addEventListener('pointercancel', onPointerUp);
 
-    // responsive rebuild when perView changes
+    // Rebuild clones when switching between 1 and 3 per view
     window.addEventListener('resize', () => {
-      // small delay so layout settles
       setTimeout(() => {
         setupClones();
-      }, 80);
+      }, 120);
     });
   }
 
-  window.addEventListener('load', () => setTimeout(init, 50));
+  window.addEventListener('load', () => setTimeout(init, 60));
 })();
 </script>
   
