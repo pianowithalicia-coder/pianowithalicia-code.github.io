@@ -664,12 +664,12 @@ header {
 }
 
 /* ===============================
-   Studio 88 section
+   Studio 88 section (desktop)
 ================================ */
 
 .studio-block{
   display:flex;
-  align-items:flex-start;     /* align logo and text from the top */
+  align-items:flex-start;     /* top-align columns */
   gap:40px;
   margin-top:40px;
 }
@@ -677,13 +677,15 @@ header {
 /* logo column */
 .studio-logo{
   flex:0 0 auto;
+  margin:0;
+  padding:0;
 }
 
 .studio-logo img{
-  display:block;
-  max-height:260px;
+  display:block;              /* removes inline-image baseline weirdness */
   width:auto;
   height:auto;
+  max-height:260px;
   object-fit:contain;
   box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
@@ -691,14 +693,25 @@ header {
 /* text column */
 .studio-text{
   max-width:600px;
+  margin:0;
+  padding:0;
+}
+
+/* KEY FIX: remove the default top margin from the first text element */
+.studio-text > :first-child{
+  margin-top:0 !important;
+}
+
+/* (Optional) also remove top margin from first paragraph if it happens instead */
+.studio-text > p:first-of-type{
+  margin-top:0 !important;
 }
 
 /* ===============================
-   Mobile layout
+   Studio 88 section (mobile)
 ================================ */
 
 @media (max-width:700px){
-
   .studio-block{
     flex-direction:column;
     align-items:center;
@@ -708,9 +721,8 @@ header {
 
   .studio-logo img{
     max-height:none;
-    width:140px;
+    width:160px;             /* slightly bigger on mobile */
   }
-
 }
 
 
