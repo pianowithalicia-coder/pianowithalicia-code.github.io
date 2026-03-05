@@ -920,3 +920,25 @@ header {
     font-size: 15px !important;
   }
 }
+
+/* ---------- Mobile page margins fix ---------- */
+@media (max-width: 680px){
+
+  .container{
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* ensure cards/forms don't stretch too wide */
+  .card{
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 680px){
+  .wa-float{
+    right: 14px;
+    bottom: 18px;
+  }
+}
