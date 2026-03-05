@@ -842,3 +842,9 @@ header {
     bottom: 18px;
   }
 }
+
+.mobile-label{ display:none; }
+@media (max-width:680px){
+  .desktop-label{ display:none; }
+  .mobile-label{ display:inline; }
+}
