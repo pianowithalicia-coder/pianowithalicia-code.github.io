@@ -690,7 +690,6 @@ header {
 /* text column */
 .studio-text{
   max-width:600px;
-  margin-top: -10px; /* try -6px to -14px until it matches */
   padding-top:0;
   margin-top:0;
 }
