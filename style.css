@@ -1248,3 +1248,57 @@ header {
     overflow: hidden;
   }
 }
+
+/* =========================================
+   MOBILE: Contact page overflow + Calendly fix
+   (Paste at the VERY bottom of style.css)
+========================================= */
+@media (max-width: 680px){
+
+  /* 1) Make sure grid items are allowed to shrink (CRUCIAL) */
+  .split,
+  .container,
+  .card,
+  .section{
+    min-width: 0 !important;
+  }
+  .split > *{
+    min-width: 0 !important;
+  }
+
+  /* 2) Force the Contact layout to a single column on mobile */
+  .split{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* 3) Calendly: remove any min-width and force full width */
+  .calendly-inline-widget{
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  .calendly-inline-widget iframe,
+  iframe{
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: block !important;
+    border: 0 !important;
+  }
+
+  /* 4) Inputs / form controls must not exceed container */
+  input, textarea, select, button{
+    max-width: 100% !important;
+  }
+
+  /* 5) Final safety: anything that still overflows gets clipped */
+  body{
+    overflow-x: clip; /* better than hidden for modern browsers */
+  }
+  header, main, footer, .section{
+    overflow-x: clip;
+  }
+}
