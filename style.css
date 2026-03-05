@@ -907,3 +907,16 @@ header {
     padding-right: 4px !important;
   }
 }
+
+/* ===== FORCE MOBILE NAV SPACING (PASTE AT VERY BOTTOM) ===== */
+@media (max-width: 680px){
+  header .container.nav .navlinks{
+    gap: 4px !important;              /* smaller spacing between tabs */
+    justify-content: flex-start !important;
+  }
+
+  header .container.nav .navlinks a{
+    padding: 10px 8px !important;     /* slightly smaller pills */
+    font-size: 15px !important;
+  }
+}
