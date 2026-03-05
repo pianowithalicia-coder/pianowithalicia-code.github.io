@@ -950,3 +950,58 @@ header {
     display:flex;          /* ensure background wraps properly */
   }
 }
+
+/* =========================
+   MOBILE NAV FIX: full-width pills + no left gap
+========================= */
+@media (max-width: 680px){
+
+  /* make sure the tab row truly starts at the left edge of the header container */
+  header .container.nav .navlinks{
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;          /* removes any hidden left padding */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between; /* stretches tabs across the row */
+    align-items: center;
+    gap: 6px;                        /* tighter spacing */
+    overflow: visible !important;    /* no scroll */
+  }
+
+  /* each tab takes equal width, so "Home" moves left and everything fits */
+  header .container.nav .navlinks a{
+    flex: 1 1 0;
+    min-width: 0;
+
+    display: flex;                   /* IMPORTANT: pill wraps full text */
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 6px;
+    font-size: 14px;
+    line-height: 1.1;
+
+    text-align: center;
+
+    white-space: nowrap;             /* no splitting */
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+
+    border-radius: 999px;
+  }
+
+  /* KILL any old fixed-size active-pill pseudo elements (the “circle” issue) */
+  header .container.nav .navlinks a.active::before,
+  header .container.nav .navlinks a.active::after{
+    content: none !important;
+    display: none !important;
+  }
+
+  /* active pill should cover the whole label */
+  header .container.nav .navlinks a.active{
+    background: rgba(0,0,0,0.08);   /* adjust if you want slightly darker/lighter */
+    box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  }
+}
