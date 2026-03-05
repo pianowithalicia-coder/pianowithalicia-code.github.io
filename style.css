@@ -775,8 +775,8 @@ header {
     flex-direction: column !important;  /* <-- forces 2 rows */
     align-items: stretch !important;
     justify-content: flex-start !important;
-    gap: 10px !important;
-    padding: 10px 12px !important;
+    gap: 8px !important;
+    padding: 10px 6px !important;
   }
 
   /* Brand row */
@@ -805,7 +805,7 @@ header {
     flex-wrap: nowrap !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    gap: 10px !important;
+    gap: 6px !important;
 
     width: 100% !important;
     margin: 0 !important;
