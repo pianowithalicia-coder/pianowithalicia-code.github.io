@@ -762,6 +762,80 @@ header {
   }
 }
 
+
+/* =========================
+   MOBILE HEADER NAV (FIXED)
+   Brand row on top, tabs row underneath (scrollable)
+========================= */
+@media (max-width: 680px){
+
+  /* IMPORTANT: target your exact element and override desktop rules */
+  header .container.nav{
+    display: flex !important;
+    flex-direction: column !important;  /* <-- forces 2 rows */
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* Brand row */
+  header .container.nav .brand{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  header .container.nav .brand-logo{
+    width: 56px !important;
+    height: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* Make brand text compact so it doesn’t become huge */
+  header .container.nav .brand-text{
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;   /* allow wrap */
+  }
+
+  /* Tabs row (one line, swipe) */
+  header .container.nav .navlinks{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none;
+  }
+  header .container.nav .navlinks::-webkit-scrollbar{ display:none; }
+
+  header .container.nav .navlinks a{
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 12px 16px !important;
+    font-size: 16px !important;
+    line-height: 1.15 !important;
+
+    white-space: nowrap !important;  /* keeps “Lesson Options” on one line */
+    border-radius: 999px !important;
+  }
+
+  header .container.nav .navlinks a.active{
+    padding: 12px 16px !important;  /* ensures pill covers full text */
+  }
+}
+
 /* ---------------------------
    MOBILE: tighten Contact page spacing
 --------------------------- */
