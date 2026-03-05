@@ -900,3 +900,64 @@ header {
   }
 
 }
+
+
+/* ---------------------------
+   MOBILE NAV: one-row + soft edge fade
+--------------------------- */
+@media (max-width: 680px){
+
+  /* reduce side padding so tabs have more room */
+  header .container.nav{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* keep tab row in ONE line and allow horizontal scroll */
+  .navlinks{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    padding: 6px 6px;               /* breathing room */
+  }
+  .navlinks::-webkit-scrollbar{ display:none; }
+
+  /* soft fade on edges (so it doesn’t look “cut”) */
+  .navlinks{
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 18px,
+      #000 calc(100% - 18px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 18px,
+      #000 calc(100% - 18px),
+      transparent 100%
+    );
+  }
+
+  /* ensure tabs don't shrink weirdly */
+  .navlinks a{
+    flex: 0 0 auto;                 /* prevents squeezing/cropping */
+    white-space: nowrap;            /* keep most tabs in one line */
+    padding: 10px 14px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  /* active pill always covers the text */
+  .navlinks a.active{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;             /* same as normal */
+    border-radius: 999px;
+  }
+}
