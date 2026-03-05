@@ -700,9 +700,6 @@ header {
   }
 }
 
-/* ---------------------------
-   MOBILE NAV LAYOUT
---------------------------- */
 
 /* ---------------------------
    MOBILE NAV LAYOUT
@@ -736,18 +733,28 @@ header {
   }
 
   /* tabs row */
-  .navlinks{
-    display:flex;
-    justify-content:space-between;
-    width:100%;
-    gap:4px;
-  }
+.navlinks{
+  display:flex;
+  flex-wrap:nowrap;          /* force one row */
+  justify-content:flex-start;/* no wasted space */
+  width:100%;
+  gap:6px;                   /* small gap only */
+}
 
-  .navlinks a{
-    flex:1;
-    text-align:center;
-    padding:10px 8px;
-    font-size:14px;
-  }
+.navlinks a{
+  flex:1;                    /* each tab shares width evenly */
+  min-width:0;               /* IMPORTANT: allows text to shrink */
+  text-align:center;
+  padding:8px 6px;           /* tighter */
+  font-size:13px;            /* slightly smaller */
+  white-space:normal;        /* allow wrap inside the tab if needed */
+  line-height:1.1;
+}
+   .container{
+  padding-left:12px;
+  padding-right:12px;
+}
 
 }
+
+
