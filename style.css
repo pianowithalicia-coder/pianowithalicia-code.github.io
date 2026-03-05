@@ -435,9 +435,15 @@ textarea:focus{
 
 /* Reviews viewport hides anything beyond the 3 visible cards */
 .reviews-viewport{
+  touch-action: pan-y;
   overflow: hidden;
   width: 100%;
   margin-top: 18px;
+}
+
+.reviews-track.is-dragging{
+  cursor: grabbing;
+  user-select: none;
 }
 
 /* Track slides left/right */
