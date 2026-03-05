@@ -676,6 +676,7 @@ header {
 
 .studio-logo{
   flex:0 0 auto;
+  margin-top: 10px; /* adjust */
 }
 
 .studio-logo img{
