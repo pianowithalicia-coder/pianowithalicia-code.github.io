@@ -1302,3 +1302,51 @@ header {
     overflow-x: clip;
   }
 }
+
+/* WhatsApp pulse signal */
+.wa-float{
+  position: fixed;
+  overflow: visible;
+}
+
+/* two soft expanding rings */
+.wa-float::before,
+.wa-float::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.22);
+  z-index: -1;
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+}
+
+.wa-float::before{
+  animation: waPulse 10s ease-out infinite;
+}
+
+.wa-float::after{
+  animation: waPulse 10s ease-out infinite;
+  animation-delay: 0.8s;
+}
+
+@keyframes waPulse{
+  0%{
+    opacity: 0;
+    transform: scale(1);
+  }
+  4%{
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  16%{
+    opacity: 0;
+    transform: scale(1.45);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}
