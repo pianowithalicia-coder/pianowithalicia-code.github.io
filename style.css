@@ -1350,3 +1350,54 @@ header {
     transform: scale(1.45);
   }
 }
+
+
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  position: fixed;
+  overflow: visible;
+}
+
+.signal {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.4);
+  animation: waSignal 10s infinite;
+}
+
+.signal1 {
+  animation-delay: 0s;
+}
+
+.signal2 {
+  animation-delay: 0.5s;
+}
+
+@keyframes waSignal {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  20% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
