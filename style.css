@@ -1375,6 +1375,7 @@ header {
   border-radius: 50%;
   background: rgba(37, 211, 102, 0.4);
   animation: waSignal 10s infinite;
+  z-index: 1;
 }
 
 .signal1 {
@@ -1400,4 +1401,9 @@ header {
     transform: scale(1.7);
     opacity: 0;
   }
+}
+
+.wa-float svg{
+  position: relative;
+  z-index: 3;
 }
