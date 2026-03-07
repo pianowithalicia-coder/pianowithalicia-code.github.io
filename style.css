@@ -461,7 +461,7 @@ textarea:focus{
   flex: 0 0 calc((100% - (var(--gap) * (var(--perView) - 1))) / var(--perView));
   padding: 18px;
   border-radius: 18px;
-  background: transparent;
+  background: white;
   border: 1px solid rgba(0,0,0,0.08);
   box-shadow: none;
 }
