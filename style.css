@@ -1407,3 +1407,11 @@ header {
   position: relative;
   z-index: 3;
 }
+
+.studio-photo img {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  display: block;
+  border-radius: 12px;
+}
