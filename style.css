@@ -1415,3 +1415,53 @@ header {
   display: block;
   border-radius: 12px;
 }
+
+.studio-resources{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.studio-resources-wrap{
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.studio-resources-image{
+  flex: 1 1 56%;
+}
+
+.studio-resources-image img{
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+}
+
+.studio-resources-text{
+  flex: 1 1 44%;
+  max-width: 430px;
+}
+
+.studio-resources-text .h2{
+  margin-bottom: 14px;
+}
+
+.studio-resources-text .p{
+  margin-bottom: 14px;
+}
+
+.studio-resources-text .p:last-child{
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px){
+  .studio-resources-wrap{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+  }
+
+  .studio-resources-text{
+    max-width: none;
+  }
+}
