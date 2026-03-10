@@ -1466,7 +1466,3 @@ header {
     max-width: none;
   }
 }
-
-.studio-resources-text > *:first-child {
-  margin-top: 0;
-}
