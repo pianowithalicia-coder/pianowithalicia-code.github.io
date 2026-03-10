@@ -1424,7 +1424,7 @@ header {
 .studio-resources-wrap{
   display: flex;
   align-items: flex-start;
-  gap: 36px;
+  gap: 42px;
 }
 
 .studio-resources-image{
@@ -1443,6 +1443,7 @@ header {
 }
 
 .studio-resources-text .h2{
+  margin-top: 0;
   margin-bottom: 14px;
 }
 
