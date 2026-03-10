@@ -1423,7 +1423,7 @@ header {
 
 .studio-resources-wrap{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 36px;
 }
 
