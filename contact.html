@@ -67,25 +67,33 @@
       <div class="card">
         <div class="h2">Booking Form</div>
 
+<p class="form-note">
+If enquiring for a child, please use the parent or guardian’s contact details and the student’s details where requested.
+</p>
+        
         <form action="https://formspree.io/f/xdalvnrr" method="POST">
 
-          <label for="name">Name</label>
+          <label for="name">Contact Name</label>
           <input id="name" name="name" type="text" 
           placeholder="John Smith" required>
 
          
-          <label for="email">Email</label>
+          <label for="email">Contact Email</label>
           <input id="email" name="email" type="email"
           placeholder="john.smith@gmail.com" required>
 
-<label for="dob">Date of birth</label>
+<label for="student-name">Student's name</label>
+<input id="student-name" name="student-name" type="text"
+placeholder="Student's full name" required>
+          
+<label for="dob">Students' Date of birth</label>
 <input id="dob" name="dob" type="date" required>
 
-          <label for="gender">Gender</label>
+          <label for="gender">Students' Gender</label>
           <input id="gender" name="gender" type="text"
                  placeholder="female / male" required>
           
-          <label for="Skill Level">Skill Level</label>
+          <label for="Skill Level">Students' Skill Level</label>
           <input id="Skill Level" name="Skill Level" type="text"
                  placeholder="beginner / intermediate / advanced / ABRSM grade 5" required>
 
