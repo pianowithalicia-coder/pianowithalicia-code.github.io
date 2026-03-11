@@ -1700,3 +1700,13 @@ input[type="date"]{
   font-family: inherit;
   font-size: inherit;
 }
+
+/* Make empty date input text grey like placeholders */
+input[type="date"]:invalid {
+  color: #9a9188;
+}
+
+/* When a date is selected, return to normal color */
+input[type="date"]:valid {
+  color: #2f2a27;
+}
