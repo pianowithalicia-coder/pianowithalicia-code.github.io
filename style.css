@@ -1677,3 +1677,21 @@ textarea::placeholder {
 textarea::placeholder {
     font-family: inherit !important;
 }
+
+/* Make form text consistent */
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make placeholder text consistent */
+input::placeholder,
+textarea::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  color: #9a9188;
+  opacity: 1;
+}
