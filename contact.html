@@ -186,64 +186,66 @@
 </script>
 
 
-<div class="policy-modal-box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+<div class="policy-modal" id="policyModal" aria-hidden="true">
+  <div class="policy-modal-backdrop" onclick="closePolicyModal()"></div>
 
-  <button type="button" class="policy-close" onclick="closePolicyModal()">×</button>
+  <div class="policy-modal-box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <button type="button" class="policy-close" aria-label="Close policy" onclick="closePolicyModal()">×</button>
 
-  <div class="policy-header">
+    <div class="policy-header">
       <h2 id="policyTitle" class="policy-title">Studio Policy</h2>
-  </div>
+    </div>
 
-  <div class="policy-scroll">
+    <div class="policy-scroll">
       <div class="policy-content">
-      <h3>Payment</h3>
-      <p>
-        Bank transfer and cash are both accepted. Payment is due at least 24 hours
-        before each lesson to secure the booking. Lessons may be cancelled or the
-        time slot offered to another student if payment has not been received in
-        advance. Repeated late payments may result in the discontinuation of regular
-        lessons.
-      </p>
+        <h3>Payment</h3>
+        <p>
+          Bank transfer and cash are both accepted. Payment is due at least 24 hours
+          before each lesson to secure the booking. Lessons may be cancelled or the
+          time slot offered to another student if payment has not been received in
+          advance. Repeated late payments may result in the discontinuation of regular
+          lessons.
+        </p>
 
-      <h3>Cancellation Policy</h3>
-      <p>
-        I understand that unexpected things can happen. If you need to cancel or
-        reschedule a lesson, please let me know at least 24 hours in advance whenever
-        possible. Cancellations made with less than 24 hours’ notice are charged in
-        full, as the time has been reserved for you.
-      </p>
+        <h3>Cancellation Policy</h3>
+        <p>
+          I understand that unexpected things can happen. If you need to cancel or
+          reschedule a lesson, please let me know at least 24 hours in advance whenever
+          possible. Cancellations made with less than 24 hours’ notice are charged in
+          full, as the time has been reserved for you.
+        </p>
 
-      <h3>Missed Lessons</h3>
-      <p>
-        If a student does not attend a scheduled lesson without prior notice, the
-        lesson will be charged in full.
-      </p>
+        <h3>Missed Lessons</h3>
+        <p>
+          If a student does not attend a scheduled lesson without prior notice, the
+          lesson will be charged in full.
+        </p>
 
-      <h3>Lesson Times</h3>
-      <p>
-        Regular weekly lesson times are reserved exclusively for each student.
-        Lessons begin and end at the scheduled time. If a student arrives late, the
-        lesson will still finish at the originally scheduled time.
-      </p>
+        <h3>Lesson Times</h3>
+        <p>
+          Regular weekly lesson times are reserved exclusively for each student.
+          Lessons begin and end at the scheduled time. If a student arrives late, the
+          lesson will still finish at the originally scheduled time.
+        </p>
 
-      <h3>Teacher Cancellation</h3>
-      <p>
-        If the teacher ever needs to cancel a lesson, it will be rescheduled or refunded.
-      </p>
+        <h3>Teacher Cancellation</h3>
+        <p>
+          If the teacher ever needs to cancel a lesson, it will be rescheduled or refunded.
+        </p>
 
-      <h3>Online Lessons</h3>
-      <p>
-        Online lessons are available if you are unable to attend in person.
-      </p>
+        <h3>Online Lessons</h3>
+        <p>
+          Online lessons are available if you are unable to attend in person.
+        </p>
 
-      <h3>Agreement</h3>
-      <p>
-        By booking lessons, you agree to the studio policies outlined above.
-      </p>
+        <h3>Agreement</h3>
+        <p>
+          By booking lessons, you agree to the studio policies outlined above.
+        </p>
+      </div>
     </div>
   </div>
 </div>
-        </div>
 
 
   <script>
