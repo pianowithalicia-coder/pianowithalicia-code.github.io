@@ -1695,3 +1695,8 @@ textarea::placeholder {
   color: #9a9188;
   opacity: 1;
 }
+
+input[type="date"]{
+  font-family: inherit;
+  font-size: inherit;
+}
