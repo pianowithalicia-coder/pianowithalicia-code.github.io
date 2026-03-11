@@ -186,15 +186,16 @@
 </script>
 
 
-<div class="policy-modal" id="policyModal" aria-hidden="true">
-  <div class="policy-modal-backdrop" onclick="closePolicyModal()"></div>
+<div class="policy-modal-box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
 
-  <div class="policy-modal-box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
-    <button type="button" class="policy-close" aria-label="Close policy" onclick="closePolicyModal()">×</button>
+  <button type="button" class="policy-close" onclick="closePolicyModal()">×</button>
 
-    <h2 id="policyTitle" class="policy-title">Studio Policy</h2>
+  <div class="policy-header">
+      <h2 id="policyTitle" class="policy-title">Studio Policy</h2>
+  </div>
 
-    <div class="policy-content">
+  <div class="policy-scroll">
+      <div class="policy-content">
       <h3>Payment</h3>
       <p>
         Bank transfer and cash are both accepted. Payment is due at least 24 hours
@@ -242,6 +243,8 @@
     </div>
   </div>
 </div>
+        </div>
+
 
   <script>
   function openPolicyModal() {
