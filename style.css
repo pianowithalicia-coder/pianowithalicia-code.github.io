@@ -1642,3 +1642,22 @@ header {
     font-size: 13px;
   }
 }
+
+/* Keep site title on one line on phones */
+@media (max-width: 600px){
+
+.site-title{
+    white-space: nowrap;
+    font-size: 18px;
+}
+
+}
+
+/* Make placeholder text use the same font as the website */
+
+input::placeholder,
+textarea::placeholder{
+  font-family: inherit;
+  color: #9a9188;
+  opacity: 1;
+}
