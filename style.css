@@ -1490,15 +1490,17 @@ header {
 }
 
 .policy-check{
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 14px;
   line-height: 1.5;
   color: #3f3a37;
 }
 
 .policy-check input{
-  margin-right: 8px;
-  transform: translateY(2px);
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .policy-link{
