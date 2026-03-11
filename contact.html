@@ -29,7 +29,8 @@
     <path fill="white" d="M16.04 2C8.29 2 2 8.29 2 16c0 2.82.82 5.52 2.38 7.83L2 30l6.33-2.35A13.94 13.94 0 0 0 16.04 30C23.79 30 30 23.71 30 16S23.79 2 16.04 2zm0 25.4c-2.31 0-4.56-.62-6.53-1.79l-.47-.28-3.76 1.39 1.4-3.66-.3-.5A11.33 11.33 0 0 1 4.7 16c0-6.25 5.09-11.34 11.34-11.34S27.38 9.75 27.38 16 22.29 27.4 16.04 27.4zm6.38-8.52c-.35-.17-2.06-1.02-2.38-1.14-.32-.12-.55-.17-.78.17-.23.35-.9 1.14-1.1 1.38-.2.23-.4.26-.75.09-.35-.17-1.47-.54-2.8-1.73-1.03-.92-1.73-2.06-1.93-2.41-.2-.35-.02-.54.15-.71.15-.15.35-.4.52-.61.17-.2.23-.35.35-.58.12-.23.06-.43-.03-.61-.09-.17-.78-1.87-1.07-2.56-.28-.67-.57-.58-.78-.59l-.66-.01c-.23 0-.61.09-.93.43-.32.35-1.22 1.19-1.22 2.91 0 1.72 1.25 3.38 1.42 3.61.17.23 2.45 3.74 5.94 5.24.83.36 1.48.57 1.99.73.83.26 1.59.22 2.19.13.67-.1 2.06-.84 2.35-1.65.29-.81.29-1.51.2-1.65-.09-.14-.32-.23-.67-.4z"/>
   </svg>
 </a>
-  
+
+
 <body>
 
 <header>
@@ -100,6 +101,17 @@
           <input type="hidden" name="_subject"
                  value="New piano lesson enquiry (Coventry)">
 
+
+<div class="policy-consent">
+  <label class="policy-check">
+    <input type="checkbox" id="policyAgree" required>
+    <span>
+      I have read and agree to the
+      <button type="button" class="policy-link" onclick="openPolicyModal()">Studio Policy</button>.
+    </span>
+  </label>
+</div>
+          
           <div class="cta-row" style="margin-top:12px">
             <button type="submit" class="button primary">Send enquiry</button>
           </div>
@@ -173,5 +185,65 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
+
+<div class="policy-modal" id="policyModal" aria-hidden="true">
+  <div class="policy-modal-backdrop" onclick="closePolicyModal()"></div>
+
+  <div class="policy-modal-box" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <button type="button" class="policy-close" aria-label="Close policy" onclick="closePolicyModal()">×</button>
+
+    <h2 id="policyTitle" class="policy-title">Studio Policy</h2>
+
+    <div class="policy-content">
+      <h3>Payment</h3>
+      <p>
+        Bank transfer and cash are both accepted. Payment is due at least 24 hours
+        before each lesson to secure the booking. Lessons may be cancelled or the
+        time slot offered to another student if payment has not been received in
+        advance. Repeated late payments may result in the discontinuation of regular
+        lessons.
+      </p>
+
+      <h3>Cancellation Policy</h3>
+      <p>
+        I understand that unexpected things can happen. If you need to cancel or
+        reschedule a lesson, please let me know at least 24 hours in advance whenever
+        possible. Cancellations made with less than 24 hours’ notice are charged in
+        full, as the time has been reserved for you.
+      </p>
+
+      <h3>Missed Lessons</h3>
+      <p>
+        If a student does not attend a scheduled lesson without prior notice, the
+        lesson will be charged in full.
+      </p>
+
+      <h3>Lesson Times</h3>
+      <p>
+        Regular weekly lesson times are reserved exclusively for each student.
+        Lessons begin and end at the scheduled time. If a student arrives late, the
+        lesson will still finish at the originally scheduled time.
+      </p>
+
+      <h3>Teacher Cancellation</h3>
+      <p>
+        If I ever need to cancel a lesson, it will be rescheduled or refunded.
+      </p>
+
+      <h3>Online Lessons</h3>
+      <p>
+        Online lessons are available if you are unable to attend in person.
+      </p>
+
+      <h3>Agreement</h3>
+      <p>
+        By booking lessons, you agree to the studio policies outlined above.
+      </p>
+    </div>
+  </div>
+</div>
+
+  
+  
 </body>
 </html>
