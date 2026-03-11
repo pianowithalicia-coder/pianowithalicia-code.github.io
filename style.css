@@ -1661,3 +1661,19 @@ textarea::placeholder{
   color: #9a9188;
   opacity: 1;
 }
+
+
+/* Ensure placeholders use the same font everywhere */
+
+input::placeholder,
+textarea::placeholder {
+    font-family: inherit;
+    font-size: inherit;
+    color: #9a9188;
+    opacity: 1;
+}
+
+/* Mobile browsers sometimes need this */
+textarea::placeholder {
+    font-family: inherit !important;
+}
