@@ -1712,54 +1712,53 @@ input[type="date"]:valid {
 }
 
 .trial-card{
-  margin: 28px 0 34px;
+  margin: 20px 0 30px;
 }
 
 .trial-card-inner{
-  background: #fffdf9;
-  border: 1.5px solid #d8d0c6;
-  border-radius: 26px;
-  padding: 32px 34px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+  background:#fffdf9;
+  border:1.5px solid #d8d0c6;
+  border-radius:20px;
+  padding:20px 26px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.04);
+  max-width:720px;   /* keeps it compact */
 }
 
 .trial-label{
-  font-size: 0.95rem;
-  color: #7a7269;
-  margin-bottom: 8px;
+  font-size:0.9rem;
+  color:#7a7269;
+  margin-bottom:4px;
 }
 
 .trial-title{
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2f2a27;
-  margin-bottom: 8px;
+  font-size:1.2rem;     /* same scale as pricing cards */
+  font-weight:600;
+  margin-bottom:2px;
 }
 
 .trial-price{
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #2f2a27;
-  margin-bottom: 6px;
+  font-size:1.8rem;     /* similar to your £40 size */
+  font-weight:700;
+  margin-bottom:4px;
 }
 
 .trial-subtitle{
-  font-size: 1.05rem;
-  color: #6f675f;
-  margin-bottom: 18px;
+  font-size:0.95rem;
+  color:#6f675f;
+  margin-bottom:10px;
 }
 
 .trial-text{
-  margin: 0 0 14px;
-  color: #4b443d;
-  line-height: 1.6;
+  font-size:0.9rem;
+  margin-bottom:8px;
+  line-height:1.4;
 }
 
 .trial-list{
-  margin: 0;
-  padding-left: 20px;
-  color: #4b443d;
-  line-height: 1.75;
+  font-size:0.9rem;
+  padding-left:18px;
+  margin:0;
+  line-height:1.4;
 }
 
 @media (max-width: 700px){
