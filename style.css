@@ -1785,3 +1785,33 @@ margin:10px auto 0 auto;
     font-size: 2rem;
   }
 }
+
+.about-block{
+display:flex;
+gap:40px;
+align-items:flex-start;
+margin-top:20px;
+}
+
+.about-photo img{
+width:320px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.about-text{
+flex:1;
+}
+
+@media (max-width:768px){
+
+.about-block{
+flex-direction:column;
+}
+
+.about-photo img{
+width:100%;
+max-width:420px;
+}
+
+}
