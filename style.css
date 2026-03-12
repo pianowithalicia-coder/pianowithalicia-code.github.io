@@ -1712,7 +1712,7 @@ input[type="date"]:valid {
 }
 
 .trial-card{
-  margin: 18px 0 24px;
+  margin: 20px 0 28px;
 }
 
 .trial-card-inner{
@@ -1721,7 +1721,6 @@ input[type="date"]:valid {
   border-radius: 20px;
   padding: 16px 22px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.04);
-  max-width: 720px;
 }
 
 .trial-label{
