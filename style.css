@@ -1788,12 +1788,13 @@ margin:10px auto 0 auto;
 
 .about-block{
 display:flex;
-gap:40px;
+gap:70px;
 align-items:flex-start;
 margin-top:20px;
 }
 
 .about-photo img{
+margin-top:20px;
 width:240px;
 border-radius:16px;
 box-shadow:0 10px 25px rgba(0,0,0,0.08);
