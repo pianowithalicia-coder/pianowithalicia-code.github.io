@@ -1712,53 +1712,63 @@ input[type="date"]:valid {
 }
 
 .trial-card{
-  margin: 20px 0 30px;
+  margin: 18px 0 24px;
 }
 
 .trial-card-inner{
-  background:#fffdf9;
-  border:1.5px solid #d8d0c6;
-  border-radius:20px;
-  padding:20px 26px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.04);
-  max-width:720px;   /* keeps it compact */
+  background: #fffdf9;
+  border: 1.5px solid #d8d0c6;
+  border-radius: 20px;
+  padding: 16px 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  max-width: 720px;
 }
 
 .trial-label{
-  font-size:0.9rem;
-  color:#7a7269;
-  margin-bottom:4px;
+  font-size: 0.85rem;
+  color: #7a7269;
+  margin-bottom: 2px;
 }
 
 .trial-title{
-  font-size:1.2rem;     /* same scale as pricing cards */
-  font-weight:600;
-  margin-bottom:2px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .trial-price{
-  font-size:1.8rem;     /* similar to your £40 size */
-  font-weight:700;
-  margin-bottom:4px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  line-height: 1.1;
 }
 
 .trial-subtitle{
-  font-size:0.95rem;
-  color:#6f675f;
-  margin-bottom:10px;
+  font-size: 0.92rem;
+  color: #6f675f;
+  margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .trial-text{
-  font-size:0.9rem;
-  margin-bottom:8px;
-  line-height:1.4;
+  font-size: 0.9rem;
+  margin: 0 0 8px 0;
+  line-height: 1.35;
 }
 
 .trial-list{
-  font-size:0.9rem;
-  padding-left:18px;
-  margin:0;
-  line-height:1.4;
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.35;
+}
+
+.trial-list li{
+  margin-bottom: 2px;
+}
+
+.trial-list li:last-child{
+  margin-bottom: 0;
 }
 
 @media (max-width: 700px){
