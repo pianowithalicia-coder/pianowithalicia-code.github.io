@@ -499,7 +499,7 @@ textarea:focus{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding-top:2px;
+  transform: translateY(2px); 
   transition: transform 160ms ease, background 160ms ease;
 }
 
