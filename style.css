@@ -496,6 +496,7 @@ textarea:focus{
   box-shadow: 0 10px 25px rgba(0,0,0,0.06);
   cursor:pointer;
   font-size:26px;
+  font-family: system-ui;
   display:flex;
   align-items:center;
   line-height:1;
